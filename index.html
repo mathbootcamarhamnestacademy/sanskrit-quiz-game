@@ -1,100 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ArhamNest Academy | Sanskrit Quest</title>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArhamNest Academy | Sanskrit Quest</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- HOME SCREEN -->
+    <div class="container" id="homeScreen">
+        <div class="logo">🪔</div>
+        <h1>ArhamNest Academy</h1>
+        <h2>Sanskrit Quest</h2>
+        <p class="tagline">Learn • Play • Master Sanskrit</p>
 
-<div class="container" id="homeScreen">
+        <input type="text" id="studentName" placeholder="👤 Enter Student Name">
 
-<div class="logo">🪔</div>
+        <select id="chapter">
+            <option value="1">Chapter 1 – वन्दना</option>
+            <option value="2">Chapter 2 – शब्द परिचय</option>
+            <option value="3">Chapter 3 – सर्वनाम</option>
+            <option value="4">Chapter 4 – धातु</option>
+            <option value="5">Chapter 5 – Numbers</option>
+            <option value="6">Chapter 6 – Revision</option>
+        </select>
 
-<h1>ArhamNest Academy</h1>
+        <button id="startBtn">🚀 START QUEST</button>
+    </div>
 
-<h2>Sanskrit Quest</h2>
+    <div class="container" id="quizScreen" style="display:none;">
+        <div class="topBar">
+            <div id="lives">❤️❤️❤️</div>
+            <div id="score">⭐ 0 XP</div>
+        </div>
 
-<p class="tagline">
-Learn • Play • Master Sanskrit
-</p>
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
 
-<input
-type="text"
-id="studentName"
-placeholder="👤 Enter Student Name">
+        <div class="quizHeader">
+            <div id="timer">⏳ 30</div>
+        </div>
 
-<select id="chapter">
+        <h2 id="question">Loading...</h2>
+        <div id="options"></div>
+        <p id="result"></p>
 
-<option value="1">Chapter 1 – वन्दना</option>
-<option value="2">Chapter 2 – शब्द परिचय</option>
-<option value="3">Chapter 3 – सर्वनाम</option>
-<option value="4">Chapter 4 – धातु</option>
-<option value="5">Chapter 5 – Numbers</option>
-<option value="6">Chapter 6 – Revision</option>
+        <button id="nextBtn">Next ➜</button>
+    </div>
 
-</select>
+    <div class="container" id="finishScreen" style="display:none;">
+        <h1>🏆 Quest Complete!</h1>
+        <div id="finalScore"></div>
+        <button onclick="location.reload()">🔄 Play Again</button>
+    </div>
 
-<button id="startBtn">
-🚀 START QUEST
-</button>
-
-</div>
-
-<!-- QUIZ SCREEN -->
-
-<div class="container" id="quizScreen" style="display:none;">
-
-<div class="topBar">
-
-<div id="lives">❤️❤️❤️</div>
-
-<div id="score">⭐ 0 XP</div>
-
-</div>
-
-<div class="progress">
-<div id="progressBar"></div>
-</div>
-
-<div class="quizHeader">
-<div id="timer">⏳ 30</div>
-</div>
-
-<h2 id="question">Loading...</h2>
-
-<div id="options"></div>
-
-<p id="result"></p>
-
-<button id="nextBtn">
-Next ➜
-</button>
-
-</div>
-
-<!-- FINISH SCREEN -->
-
-<div class="container" id="finishScreen" style="display:none;">
-
-<h1>🏆 Quest Complete!</h1>
-
-<h2 id="finalScore"></h2>
-
-<button onclick="location.reload()">
-🔄 Play Again
-</button>
-
-</div>
-
-<script src="questions.js"></script>
-<script src="script.js"></script>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
