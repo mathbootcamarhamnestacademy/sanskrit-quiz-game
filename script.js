@@ -142,7 +142,65 @@ function nextQuestion(){
 // Part 2 starts here...
 function checkAnswer(index){
 
-    // We will add this in Part 2
+    clearInterval(timerInterval);
+
+    const q = questions[currentQuestion];
+
+    const buttons = document.querySelectorAll(".option");
+
+    buttons.forEach((btn,i)=>{
+
+        btn.disabled = true;
+
+        if(i===q.answer){
+            btn.style.background="#4CAF50";
+        }
+
+        if(i===index && index!==q.answer){
+            btn.style.background="#F44336";
+        }
+
+    });
+
+    if(index===q.answer){
+
+        score += 10;
+
+        resultEl.innerHTML="✅ Correct! +10 XP";
+        resultEl.style.color="green";
+
+    }else{
+
+        lives--;
+
+        score=Math.max(0,score-5);
+
+        resultEl.innerHTML=
+        "❌ Wrong! Correct Answer: <b>"+q.options[q.answer]+"</b>";
+
+        resultEl.style.color="red";
+
+    }
+
+    updateHeader();
+
+    setTimeout(()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion>=questions.length || lives<=0){
+
+            finishQuiz();
+
+        }else{
+
+            loadQuestion();
+
+        }
+
+    },2000);
+
+}
 
 }
 
