@@ -280,7 +280,7 @@ function finishQuiz() {
         <h2>${medal}</h2>
 
     
-    `;
+   l `
 }
 
 // Start with the home screen visible
