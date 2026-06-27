@@ -66,3 +66,63 @@ button:hover{
 background:#F57C00;
 transform:scale(1.03);
 }
+/* ===== QUIZ SCREEN ===== */
+
+.quizHeader{
+display:flex;
+justify-content:flex-end;
+margin:15px 0;
+}
+
+#timer{
+background:#8B4513;
+color:white;
+padding:8px 18px;
+border-radius:20px;
+font-size:22px;
+font-weight:bold;
+box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+
+.topBar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+font-size:22px;
+font-weight:bold;
+}
+
+#score{
+color:#E67E22;
+}
+
+#lives{
+font-size:28px;
+}
+
+.progress{
+width:100%;
+height:14px;
+background:#eee;
+border-radius:10px;
+overflow:hidden;
+margin:15px 0;
+}
+
+#progressBar{
+width:0%;
+height:100%;
+background:linear-gradient(90deg,#FFD700,#FF9800);
+transition:0.5s;
+}
+
+.option{
+margin:12px 0;
+}
+
+#result{
+font-size:22px;
+font-weight:bold;
+margin:15px 0;
+}
