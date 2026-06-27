@@ -1,7 +1,6 @@
-// ===============================
+// ==============================
 // ArhamNest Sanskrit Quest v1.0
-// Part 1
-// ===============================
+// ==============================
 
 let currentQuestion = 0;
 let score = 0;
@@ -11,21 +10,29 @@ let timerInterval;
 
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
+const finishScreen = document.getElementById("finishScreen");
+
+const studentName = document.getElementById("studentName");
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
+const resultEl = document.getElementById("result");
 
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
-const progressBar = document.getElementById("progressBar");
 const timerEl = document.getElementById("timer");
-
-const resultEl = document.getElementById("result");
+const progressBar = document.getElementById("progressBar");
+const finalScore = document.getElementById("finalScore");
 
 document.getElementById("startBtn").onclick = startQuest;
 document.getElementById("nextBtn").onclick = nextQuestion;
 
 function startQuest(){
+
+    if(studentName.value.trim()==""){
+        alert("Please enter student name.");
+        return;
+    }
 
     homeScreen.style.display="none";
     quizScreen.style.display="block";
@@ -43,10 +50,8 @@ function loadQuestion(){
     clearInterval(timerInterval);
 
     if(currentQuestion>=questions.length){
-
         finishQuiz();
         return;
-
     }
 
     timer=30;
@@ -62,9 +67,9 @@ function loadQuestion(){
 
     questionEl.innerHTML=q.question;
 
-    optionsEl.innerHTML="";
-
     resultEl.innerHTML="";
+
+    optionsEl.innerHTML="";
 
     q.options.forEach((option,index)=>{
 
@@ -117,7 +122,7 @@ function updateHeader(){
 function checkAnswer(index){
 
     // Part 2
-    // We'll build this next
+    // Next message
 
 }
 
@@ -126,10 +131,8 @@ function nextQuestion(){
     currentQuestion++;
 
     if(lives<=0){
-
         finishQuiz();
         return;
-
     }
 
     loadQuestion();
@@ -140,12 +143,21 @@ function finishQuiz(){
 
     clearInterval(timerInterval);
 
-    alert(
-        "🏆 Quiz Finished\n\n"+
-        "Score : "+score+
-        "\nLives : "+lives
-    );
+    quizScreen.style.display="none";
 
-    location.reload();
+    finishScreen.style.display="block";
+
+    let medal="🥉 Bronze";
+
+    if(score>=80){
+        medal="🥇 Gold";
+    }else if(score>=50){
+        medal="🥈 Silver";
+    }
+
+    finalScore.innerHTML=
+    "Student : <b>"+studentName.value+"</b><br><br>"+
+    "XP : "+score+"<br><br>"+
+    medal;
 
 }
