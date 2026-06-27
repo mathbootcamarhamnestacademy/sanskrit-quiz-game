@@ -1,12 +1,13 @@
-// ==============================
+// ====================================
 // ArhamNest Sanskrit Quest v1.0
-// ==============================
+// Part 1
+// ====================================
 
 let currentQuestion = 0;
 let score = 0;
 let lives = 3;
 let timer = 30;
-let timerInterval;
+let timerInterval = null;
 
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
@@ -24,17 +25,18 @@ const timerEl = document.getElementById("timer");
 const progressBar = document.getElementById("progressBar");
 const finalScore = document.getElementById("finalScore");
 
-document.getElementById("startBtn").onclick = startQuest;
-document.getElementById("nextBtn").onclick = nextQuestion;
+document.getElementById("startBtn").addEventListener("click", startQuest);
+document.getElementById("nextBtn").addEventListener("click", nextQuestion);
 
 function startQuest(){
 
-    if(studentName.value.trim()==""){
-        alert("Please enter student name.");
+    if(studentName.value.trim()===""){
+        alert("Please enter your name.");
         return;
     }
 
     homeScreen.style.display="none";
+    finishScreen.style.display="none";
     quizScreen.style.display="block";
 
     currentQuestion=0;
@@ -56,12 +58,12 @@ function loadQuestion(){
 
     timer=30;
 
-    startTimer();
-
     updateHeader();
 
-    progressBar.style.width=
-    ((currentQuestion)/questions.length*100)+"%";
+    startTimer();
+
+    progressBar.style.width =
+    ((currentQuestion+1)/questions.length*100)+"%";
 
     const q=questions[currentQuestion];
 
@@ -77,7 +79,7 @@ function loadQuestion(){
 
         btn.className="option";
 
-        btn.innerHTML=option;
+        btn.textContent=option;
 
         btn.onclick=()=>checkAnswer(index);
 
@@ -89,19 +91,21 @@ function loadQuestion(){
 
 function startTimer(){
 
-    timerEl.innerHTML="⏳ "+timer;
+    timerEl.textContent="⏳ "+timer;
 
     timerInterval=setInterval(()=>{
 
         timer--;
 
-        timerEl.innerHTML="⏳ "+timer;
+        timerEl.textContent="⏳ "+timer;
 
         if(timer<=0){
 
             clearInterval(timerInterval);
 
             lives--;
+
+            updateHeader();
 
             nextQuestion();
 
@@ -113,9 +117,44 @@ function startTimer(){
 
 function updateHeader(){
 
-    scoreEl.innerHTML="⭐ "+score+" XP";
+    scoreEl.textContent="⭐ "+score+" XP";
 
-    livesEl.innerHTML="❤️".repeat(lives);
+    livesEl.textContent="❤️".repeat(lives);
+
+}
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(lives<=0){
+
+        finishQuiz();
+
+        return;
+
+    }
+
+    loadQuestion();
+
+}
+
+// Part 2 starts here...
+function checkAnswer(index){
+
+    // We will add this in Part 2
+
+}
+
+function finishQuiz(){
+
+    clearInterval(timerInterval);
+
+    quizScreen.style.display="none";
+
+    finishScreen.style.display="block";
+
+    finalScore.innerHTML="Loading Result...";
 
 }
 
