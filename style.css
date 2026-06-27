@@ -1,13 +1,8 @@
-/* ===========================
-   ArhamNest Sanskrit Quest
-   Version 1.0
-=========================== */
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
@@ -19,103 +14,80 @@ min-height:100vh;
 padding:20px;
 }
 
-/* Card */
-
 .container{
 width:100%;
-max-width:420px;
+max-width:430px;
 background:#fff;
 padding:25px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+border-radius:25px;
+box-shadow:0 12px 30px rgba(0,0,0,.18);
 text-align:center;
 }
-
-/* Logo */
 
 .logo{
 font-size:60px;
 margin-bottom:10px;
 }
 
-/* Headings */
-
 h1{
 color:#E67E22;
-margin-bottom:5px;
+margin-bottom:8px;
+font-size:34px;
 }
 
 h2{
 color:#8B4513;
-margin-bottom:20px;
+margin-bottom:18px;
 }
-
-h3{
-margin:20px 0;
-color:#4E342E;
-}
-
-/* Tagline */
 
 .tagline{
 color:#666;
-margin-bottom:20px;
+margin-bottom:25px;
+font-size:18px;
 }
-
-/* Input & Select */
 
 input,
 select{
 width:100%;
-padding:14px;
-margin:10px 0;
-font-size:17px;
-border-radius:12px;
+padding:15px;
+margin:12px 0;
+font-size:18px;
 border:2px solid #FFD180;
+border-radius:14px;
 outline:none;
 }
 
-/* Buttons */
-
 button{
 width:100%;
-padding:15px;
-margin-top:12px;
-background:#FF9800;
-color:white;
+padding:16px;
+margin-top:18px;
 border:none;
-border-radius:12px;
-font-size:18px;
+border-radius:14px;
+background:linear-gradient(90deg,#FFA000,#FF8F00);
+color:white;
+font-size:22px;
 font-weight:bold;
 cursor:pointer;
 transition:.3s;
 }
 
 button:hover{
-background:#F57C00;
 transform:scale(1.02);
 }
-
-/* Top Bar */
 
 .topBar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:15px;
-font-size:22px;
-font-weight:bold;
+font-size:28px;
+margin-bottom:20px;
 }
 
 #score{
 color:#E67E22;
+font-size:24px;
+font-weight:bold;
 }
-
-#lives{
-font-size:28px;
-}
-
-/* Timer */
 
 .quizHeader{
 display:flex;
@@ -132,11 +104,9 @@ font-size:20px;
 font-weight:bold;
 }
 
-/* Progress */
-
 .progress{
 width:100%;
-height:14px;
+height:12px;
 background:#ddd;
 border-radius:20px;
 overflow:hidden;
@@ -144,62 +114,51 @@ margin:20px 0;
 }
 
 #progressBar{
-height:100%;
 width:0%;
+height:100%;
 background:linear-gradient(90deg,#FFD700,#FF9800);
-transition:width .4s;
+transition:.4s;
 }
 
-/* Question */
-
 #question{
-font-size:24px;
-margin-bottom:20px;
+font-size:30px;
+margin:25px 0;
 color:#4E342E;
 }
 
-/* Option Buttons */
-
 .option{
+display:block;
 width:100%;
-padding:14px;
-margin:10px 0;
+padding:15px;
+margin:12px 0;
 background:#FF9800;
 color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
+font-size:22px;
 font-weight:bold;
+border:none;
+border-radius:14px;
 cursor:pointer;
-transition:.3s;
 }
 
 .option:hover{
 background:#F57C00;
 }
 
-/* Result */
-
 #result{
-margin:15px 0;
-font-size:20px;
+min-height:35px;
+font-size:22px;
 font-weight:bold;
-min-height:30px;
+margin-top:15px;
 }
 
-/* Finish Screen */
-
-#finishScreen{
-text-align:center;
+#finishScreen h1{
+color:#E67E22;
 }
 
 #finalScore{
 font-size:28px;
-color:#E67E22;
-margin:20px 0;
+margin:25px 0;
 }
-
-/* Mobile */
 
 @media(max-width:480px){
 
@@ -208,15 +167,19 @@ padding:20px;
 }
 
 h1{
-font-size:28px;
+font-size:30px;
 }
 
 #question{
-font-size:22px;
+font-size:26px;
+}
+
+.option{
+font-size:20px;
 }
 
 button{
-font-size:18px;
+font-size:20px;
 }
 
 }
