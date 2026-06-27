@@ -1,62 +1,91 @@
-body{
+/* ===========================
+   ArhamNest Sanskrit Quest
+   Version 1.0
+=========================== */
+
+*{
 margin:0;
 padding:0;
-font-family:Arial,sans-serif;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
 background:linear-gradient(135deg,#FFF8E7,#FFE4B5);
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+min-height:100vh;
+padding:20px;
 }
 
+/* Card */
+
 .container{
-width:90%;
+width:100%;
 max-width:420px;
-background:white;
-padding:30px;
-border-radius:25px;
+background:#fff;
+padding:25px;
+border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,.2);
 text-align:center;
 }
 
+/* Logo */
+
 .logo{
 font-size:60px;
+margin-bottom:10px;
 }
 
+/* Headings */
+
 h1{
-margin:10px 0;
 color:#E67E22;
+margin-bottom:5px;
 }
 
 h2{
-margin:5px 0 20px;
 color:#8B4513;
+margin-bottom:20px;
 }
+
+h3{
+margin:20px 0;
+color:#4E342E;
+}
+
+/* Tagline */
 
 .tagline{
 color:#666;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
-input,select{
+/* Input & Select */
+
+input,
+select{
 width:100%;
-padding:15px;
+padding:14px;
 margin:10px 0;
 font-size:17px;
 border-radius:12px;
-border:2px solid #FFCC80;
-box-sizing:border-box;
+border:2px solid #FFD180;
+outline:none;
 }
+
+/* Buttons */
 
 button{
 width:100%;
-padding:16px;
-margin-top:20px;
+padding:15px;
+margin-top:12px;
 background:#FF9800;
 color:white;
 border:none;
 border-radius:12px;
-font-size:20px;
+font-size:18px;
 font-weight:bold;
 cursor:pointer;
 transition:.3s;
@@ -64,25 +93,10 @@ transition:.3s;
 
 button:hover{
 background:#F57C00;
-transform:scale(1.03);
-}
-/* ===== QUIZ SCREEN ===== */
-
-.quizHeader{
-display:flex;
-justify-content:flex-end;
-margin:15px 0;
+transform:scale(1.02);
 }
 
-#timer{
-background:#8B4513;
-color:white;
-padding:8px 18px;
-border-radius:20px;
-font-size:22px;
-font-weight:bold;
-box-shadow:0 3px 8px rgba(0,0,0,.2);
-}
+/* Top Bar */
 
 .topBar{
 display:flex;
@@ -101,28 +115,108 @@ color:#E67E22;
 font-size:28px;
 }
 
+/* Timer */
+
+.quizHeader{
+display:flex;
+justify-content:flex-end;
+margin-bottom:15px;
+}
+
+#timer{
+background:#8B4513;
+color:white;
+padding:8px 18px;
+border-radius:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+/* Progress */
+
 .progress{
 width:100%;
 height:14px;
-background:#eee;
-border-radius:10px;
+background:#ddd;
+border-radius:20px;
 overflow:hidden;
-margin:15px 0;
+margin:20px 0;
 }
 
 #progressBar{
-width:0%;
 height:100%;
+width:0%;
 background:linear-gradient(90deg,#FFD700,#FF9800);
-transition:0.5s;
+transition:width .4s;
 }
+
+/* Question */
+
+#question{
+font-size:24px;
+margin-bottom:20px;
+color:#4E342E;
+}
+
+/* Option Buttons */
 
 .option{
-margin:12px 0;
+width:100%;
+padding:14px;
+margin:10px 0;
+background:#FF9800;
+color:white;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
 }
 
+.option:hover{
+background:#F57C00;
+}
+
+/* Result */
+
 #result{
-font-size:22px;
-font-weight:bold;
 margin:15px 0;
+font-size:20px;
+font-weight:bold;
+min-height:30px;
+}
+
+/* Finish Screen */
+
+#finishScreen{
+text-align:center;
+}
+
+#finalScore{
+font-size:28px;
+color:#E67E22;
+margin:20px 0;
+}
+
+/* Mobile */
+
+@media(max-width:480px){
+
+.container{
+padding:20px;
+}
+
+h1{
+font-size:28px;
+}
+
+#question{
+font-size:22px;
+}
+
+button{
+font-size:18px;
+}
+
 }
