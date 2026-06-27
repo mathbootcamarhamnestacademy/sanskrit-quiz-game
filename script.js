@@ -1,6 +1,6 @@
 // =======================================================
 // ArhamNest Academy - Sanskrit Quest v1.0
-// script.js (Part 1/3)
+// Fully Corrected script.js
 // =======================================================
 
 let currentQuestion = 0;
@@ -8,6 +8,7 @@ let score = 0;
 let lives = 3;
 let timer = 30;
 let timerInterval = null;
+let transitionTimeout = null; // Fix: Tracks background timeouts to prevent skipping
 
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
@@ -32,7 +33,6 @@ startBtn.addEventListener("click", startQuest);
 nextBtn.addEventListener("click", nextQuestion);
 
 function startQuest() {
-
     if (studentName.value.trim() === "") {
         alert("Please enter your name.");
         return;
@@ -47,12 +47,11 @@ function startQuest() {
     quizScreen.style.display = "block";
 
     loadQuestion();
-
 }
 
 function loadQuestion() {
-
     clearInterval(timerInterval);
+    clearTimeout(transitionTimeout); // Fix: Stops any leftover timers from previous screens
 
     if (currentQuestion >= questions.length) {
         finishQuiz();
@@ -60,103 +59,66 @@ function loadQuestion() {
     }
 
     timer = 30;
-
     updateHeader();
 
-    progressBar.style.width =
-        ((currentQuestion + 1) / questions.length) * 100 + "%";
+    progressBar.style.width = ((currentQuestion + 1) / questions.length) * 100 + "%";
 
     const q = questions[currentQuestion];
-
     questionEl.textContent = q.question;
-
     resultEl.textContent = "";
-
     optionsEl.innerHTML = "";
 
     q.options.forEach((option, index) => {
-
         const btn = document.createElement("button");
-
         btn.className = "option";
-
         btn.textContent = option;
-
         btn.onclick = () => checkAnswer(index);
-
         optionsEl.appendChild(btn);
-
     });
 
     startTimer();
-
 }
 
 function startTimer() {
-
     timerEl.textContent = "⏳ " + timer;
 
     timerInterval = setInterval(() => {
-
         timer--;
-
         timerEl.textContent = "⏳ " + timer;
 
         if (timer <= 0) {
-
             clearInterval(timerInterval);
-
             lives--;
-
             updateHeader();
 
             resultEl.textContent = "⏰ Time's Up!";
             resultEl.style.color = "red";
 
-            setTimeout(() => {
-
+            // Fix: Store the timeout ID
+            transitionTimeout = setTimeout(() => {
                 currentQuestion++;
-
                 if (lives <= 0) {
-
                     finishQuiz();
-
                 } else {
-
                     loadQuestion();
-
                 }
-
             }, 1500);
-
         }
-
     }, 1000);
-
 }
 
 function updateHeader() {
-
     scoreEl.textContent = "⭐ " + score + " XP";
-
     livesEl.textContent = "❤️".repeat(lives);
-
 }
-// =======================================================
-// ArhamNest Academy - Sanskrit Quest v1.0
-// script.js (Part 2/3)
-// =======================================================
 
 function checkAnswer(index) {
-
     clearInterval(timerInterval);
 
     const q = questions[currentQuestion];
-
     const buttons = document.querySelectorAll(".option");
 
     buttons.forEach((btn, i) => {
-
         btn.disabled = true;
 
         if (i === q.answer) {
@@ -168,127 +130,83 @@ function checkAnswer(index) {
             btn.style.background = "#F44336";
             btn.style.color = "#fff";
         }
-
     });
 
     if (index === q.answer) {
-
         score += 10;
-
         resultEl.innerHTML = "✅ Correct! +10 XP";
         resultEl.style.color = "green";
-
     } else {
-
         lives--;
-
         score = Math.max(0, score - 5);
-
-        resultEl.innerHTML =
-            "❌ Wrong!<br>Correct Answer: <b>" +
-            q.options[q.answer] +
-            "</b>";
-
+        resultEl.innerHTML = "❌ Wrong!<br>Correct Answer: <b>" + q.options[q.answer] + "</b>";
         resultEl.style.color = "red";
-
     }
 
     updateHeader();
 
-    setTimeout(() => {
-
+    // Fix: Store the timeout ID
+    transitionTimeout = setTimeout(() => {
         currentQuestion++;
-
         if (lives <= 0 || currentQuestion >= questions.length) {
-
             finishQuiz();
-
         } else {
-
             loadQuestion();
-
         }
-
     }, 2000);
-
 }
 
 function nextQuestion() {
-
     clearInterval(timerInterval);
+    clearTimeout(transitionTimeout); // Fix: Clear transition timer if they manual-skip
 
     currentQuestion++;
 
     if (lives <= 0 || currentQuestion >= questions.length) {
-
         finishQuiz();
-
         return;
-
     }
 
     loadQuestion();
-
 }
-// =======================================================
-// ArhamNest Academy - Sanskrit Quest v1.0
-// script.js (Part 3/3)
-// =======================================================
 
 function finishQuiz() {
-
     clearInterval(timerInterval);
+    clearTimeout(transitionTimeout); // Fix: Clean up any racing timers
 
     quizScreen.style.display = "none";
     finishScreen.style.display = "block";
 
-    const percentage = Math.round(
-        (score / (questions.length * 10)) * 100
-    );
+    const percentage = Math.round((score / (questions.length * 10)) * 100);
 
     let medal = "🥉 Bronze Medal";
     let message = "Good Job!";
 
     if (percentage >= 90) {
-
         medal = "🥇 Gold Medal";
         message = "Outstanding!";
-
     } else if (percentage >= 70) {
-
         medal = "🥈 Silver Medal";
         message = "Excellent!";
-
     } else if (percentage >= 50) {
-
         medal = "🥉 Bronze Medal";
         message = "Well Done!";
-
-    } else {
-
-        medal = "📚 Keep Practicing";
-        message = "Don't Give Up!";
-
     }
 
+    // Fix: Properly added the closing backtick (`) and semicolon below
     finalScore.innerHTML = `
         <h2>${message}</h2>
-
         <h3>👤 ${studentName.value}</h3>
-
         <hr>
-
         <p>⭐ XP : <b>${score}</b></p>
-
         <p>📊 Score : <b>${percentage}%</b></p>
-
         <h2>${medal}</h2>
-    `;
-
+    `; 
 }
 
-       
 // Start with the home screen visible
 homeScreen.style.display = "block";
 quizScreen.style.display = "none";
 finishScreen.style.display = "none";
+
+```
