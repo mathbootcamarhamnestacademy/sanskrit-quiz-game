@@ -1,6 +1,5 @@
 // =======================================================
 // ArhamNest Academy - Sanskrit Quest v1.0
-// Fully Corrected script.js
 // =======================================================
 
 let currentQuestion = 0;
