@@ -1,7 +1,7 @@
-// ======================================
-// ArhamNest Sanskrit Quest v1.0
-// Part 1
-// ======================================
+// =======================================================
+// ArhamNest Academy - Sanskrit Quest v1.0
+// script.js (Part 1/3)
+// =======================================================
 
 let currentQuestion = 0;
 let score = 0;
@@ -25,78 +25,84 @@ const timerEl = document.getElementById("timer");
 const progressBar = document.getElementById("progressBar");
 const finalScore = document.getElementById("finalScore");
 
-document.getElementById("startBtn").addEventListener("click", startQuest);
-document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+const startBtn = document.getElementById("startBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-function startQuest(){
+startBtn.addEventListener("click", startQuest);
+nextBtn.addEventListener("click", nextQuestion);
 
-    if(studentName.value.trim()===""){
+function startQuest() {
+
+    if (studentName.value.trim() === "") {
         alert("Please enter your name.");
         return;
     }
 
-    homeScreen.style.display="none";
-    finishScreen.style.display="none";
-    quizScreen.style.display="block";
+    currentQuestion = 0;
+    score = 0;
+    lives = 3;
 
-    currentQuestion=0;
-    score=0;
-    lives=3;
+    homeScreen.style.display = "none";
+    finishScreen.style.display = "none";
+    quizScreen.style.display = "block";
 
     loadQuestion();
+
 }
 
-function loadQuestion(){
+function loadQuestion() {
 
     clearInterval(timerInterval);
 
-    if(currentQuestion>=questions.length){
+    if (currentQuestion >= questions.length) {
         finishQuiz();
         return;
     }
 
-    timer=30;
+    timer = 30;
 
     updateHeader();
 
-    progressBar.style.width=((currentQuestion+1)/questions.length*100)+"%";
+    progressBar.style.width =
+        ((currentQuestion + 1) / questions.length) * 100 + "%";
 
-    const q=questions[currentQuestion];
+    const q = questions[currentQuestion];
 
-    questionEl.textContent=q.question;
+    questionEl.textContent = q.question;
 
-    resultEl.textContent="";
+    resultEl.textContent = "";
 
-    optionsEl.innerHTML="";
+    optionsEl.innerHTML = "";
 
-    q.options.forEach((option,index)=>{
+    q.options.forEach((option, index) => {
 
-        const btn=document.createElement("button");
+        const btn = document.createElement("button");
 
-        btn.className="option";
+        btn.className = "option";
 
-        btn.textContent=option;
+        btn.textContent = option;
 
-        btn.onclick=()=>checkAnswer(index);
+        btn.onclick = () => checkAnswer(index);
 
         optionsEl.appendChild(btn);
 
     });
 
     startTimer();
+
 }
 
-function startTimer(){
+function startTimer() {
 
-    timerEl.textContent="⏳ "+timer;
+    timerEl.textContent = "⏳ " + timer;
 
-    timerInterval=setInterval(()=>{
+    timerInterval = setInterval(() => {
 
         timer--;
 
-        timerEl.textContent="⏳ "+timer;
+        timerEl.textContent = "⏳ " + timer;
 
-        if(timer<=0){
+        if (timer <= 0) {
 
             clearInterval(timerInterval);
 
@@ -104,32 +110,44 @@ function startTimer(){
 
             updateHeader();
 
-            currentQuestion++;
+            resultEl.textContent = "⏰ Time's Up!";
+            resultEl.style.color = "red";
 
-            if(lives<=0 || currentQuestion>=questions.length){
+            setTimeout(() => {
 
-                finishQuiz();
+                currentQuestion++;
 
-            }else{
+                if (lives <= 0) {
 
-                loadQuestion();
+                    finishQuiz();
 
-            }
+                } else {
+
+                    loadQuestion();
+
+                }
+
+            }, 1500);
 
         }
 
-    },1000);
+    }, 1000);
 
 }
 
-function updateHeader(){
+function updateHeader() {
 
-    scoreEl.textContent="⭐ "+score+" XP";
+    scoreEl.textContent = "⭐ " + score + " XP";
 
-    livesEl.textContent="❤️".repeat(lives);
+    livesEl.textContent = "❤️".repeat(lives);
 
 }
-function checkAnswer(index){
+// =======================================================
+// ArhamNest Academy - Sanskrit Quest v1.0
+// script.js (Part 2/3)
+// =======================================================
+
+function checkAnswer(index) {
 
     clearInterval(timerInterval);
 
@@ -137,90 +155,137 @@ function checkAnswer(index){
 
     const buttons = document.querySelectorAll(".option");
 
-    // Disable all buttons
-    buttons.forEach(btn => btn.disabled = true);
+    buttons.forEach((btn, i) => {
 
-    // Highlight answers
-    buttons.forEach((btn,i)=>{
+        btn.disabled = true;
 
-        if(i===q.answer){
+        if (i === q.answer) {
+            btn.style.background = "#4CAF50";
+            btn.style.color = "#fff";
+        }
 
-            btn.style.background="#4CAF50";
-            btn.style.color="white";
-
-        }else if(i===index){
-
-            btn.style.background="#F44336";
-            btn.style.color="white";
-
+        if (i === index && index !== q.answer) {
+            btn.style.background = "#F44336";
+            btn.style.color = "#fff";
         }
 
     });
 
-    // Check answer
-    if(index===q.answer){
+    if (index === q.answer) {
 
         score += 10;
 
-        resultEl.innerHTML="✅ Correct! +10 XP";
-        resultEl.style.color="green";
+        resultEl.innerHTML = "✅ Correct! +10 XP";
+        resultEl.style.color = "green";
 
-    }else{
+    } else {
 
         lives--;
 
-        score=Math.max(0,score-5);
+        score = Math.max(0, score - 5);
 
-        resultEl.innerHTML=
-        "❌ Wrong!<br>Correct Answer: <b>"+q.options[q.answer]+"</b>";
+        resultEl.innerHTML =
+            "❌ Wrong!<br>Correct Answer: <b>" +
+            q.options[q.answer] +
+            "</b>";
 
-        resultEl.style.color="red";
+        resultEl.style.color = "red";
 
     }
 
     updateHeader();
 
-    // Move to next question after 2 seconds
-    setTimeout(()=>{
+    setTimeout(() => {
 
         currentQuestion++;
 
-        if(lives<=0 || currentQuestion>=questions.length){
+        if (lives <= 0 || currentQuestion >= questions.length) {
 
             finishQuiz();
 
-        }else{
+        } else {
 
             loadQuestion();
 
         }
 
-        function finishQuiz(){
+    }, 2000);
+
+}
+
+function nextQuestion() {
 
     clearInterval(timerInterval);
 
-    quizScreen.style.display="none";
-    finishScreen.style.display="block";
+    currentQuestion++;
 
-    let percentage = Math.round((score/(questions.length*10))*100);
+    if (lives <= 0 || currentQuestion >= questions.length) {
 
-    let medal="🥉 Bronze";
+        finishQuiz();
 
-    if(percentage>=90){
-        medal="🥇 Gold";
-    }else if(percentage>=70){
-        medal="🥈 Silver";
+        return;
+
     }
 
-    finalScore.innerHTML=`
-        <h2>🎉 Congratulations!</h2>
-        <h3>${studentName.value}</h3>
-        <p>⭐ XP: ${score}</p>
-        <p>📊 Score: ${percentage}%</p>
-        <h1>${medal}</h1>
+    loadQuestion();
+
+}
+// =======================================================
+// ArhamNest Academy - Sanskrit Quest v1.0
+// script.js (Part 3/3)
+// =======================================================
+
+function finishQuiz() {
+
+    clearInterval(timerInterval);
+
+    quizScreen.style.display = "none";
+    finishScreen.style.display = "block";
+
+    const percentage = Math.round(
+        (score / (questions.length * 10)) * 100
+    );
+
+    let medal = "🥉 Bronze Medal";
+    let message = "Good Job!";
+
+    if (percentage >= 90) {
+
+        medal = "🥇 Gold Medal";
+        message = "Outstanding!";
+
+    } else if (percentage >= 70) {
+
+        medal = "🥈 Silver Medal";
+        message = "Excellent!";
+
+    } else if (percentage >= 50) {
+
+        medal = "🥉 Bronze Medal";
+        message = "Well Done!";
+
+    }
+
+    finalScore.innerHTML = `
+        <h2>${message}</h2>
+
+        <h3>👤 ${studentName.value}</h3>
+
+        <hr>
+
+        <p>⭐ XP : <b>${score}</b></p>
+
+        <p>📊 Score : <b>${percentage}%</b></p>
+
+        <h2>${medal}</h2>
+
+        <button onclick="location.reload()">
+            🔄 Play Again
+        </button>
     `;
-
 }
-    
 
-}
+// Start with the home screen visible
+homeScreen.style.display = "block";
+quizScreen.style.display = "none";
+finishScreen.style.display = "none";
