@@ -1,6 +1,13 @@
+// ===============================
+// ArhamNest Sanskrit Quest v1.0
+// Part 1
+// ===============================
+
 let currentQuestion = 0;
 let score = 0;
 let lives = 3;
+let timer = 30;
+let timerInterval;
 
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
@@ -11,7 +18,9 @@ const optionsEl = document.getElementById("options");
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
 const progressBar = document.getElementById("progressBar");
-const messageEl = document.getElementById("message");
+const timerEl = document.getElementById("timer");
+
+const resultEl = document.getElementById("result");
 
 document.getElementById("startBtn").onclick = startQuest;
 document.getElementById("nextBtn").onclick = nextQuestion;
@@ -26,18 +35,25 @@ function startQuest(){
     lives=3;
 
     loadQuestion();
+
 }
 
 function loadQuestion(){
 
+    clearInterval(timerInterval);
+
     if(currentQuestion>=questions.length){
-        alert("🎉 Congratulations!\nYour Score : "+score);
-        location.reload();
+
+        finishQuiz();
         return;
+
     }
 
-    scoreEl.innerHTML="⭐ "+score+" XP";
-    livesEl.innerHTML="❤️".repeat(lives);
+    timer=30;
+
+    startTimer();
+
+    updateHeader();
 
     progressBar.style.width=
     ((currentQuestion)/questions.length*100)+"%";
@@ -48,7 +64,7 @@ function loadQuestion(){
 
     optionsEl.innerHTML="";
 
-    messageEl.innerHTML="";
+    resultEl.innerHTML="";
 
     q.options.forEach((option,index)=>{
 
@@ -66,39 +82,42 @@ function loadQuestion(){
 
 }
 
-function checkAnswer(index){
+function startTimer(){
 
-    const q=questions[currentQuestion];
+    timerEl.innerHTML="⏳ "+timer;
 
-    if(index===q.answer){
+    timerInterval=setInterval(()=>{
 
-        score+=10;
+        timer--;
 
-        messageEl.innerHTML="✅ Correct! +10 XP";
-        messageEl.style.color="green";
+        timerEl.innerHTML="⏳ "+timer;
 
-    }else{
+        if(timer<=0){
 
-        lives--;
+            clearInterval(timerInterval);
 
-        score=Math.max(0,score-5);
+            lives--;
 
-        messageEl.innerHTML=
-        "❌ Wrong! Correct Answer: "+q.options[q.answer];
-
-        messageEl.style.color="red";
-
-        if(lives===0){
-
-            alert("💀 Game Over");
-
-            location.reload();
-
-            return;
+            nextQuestion();
 
         }
 
-    }
+    },1000);
+
+}
+
+function updateHeader(){
+
+    scoreEl.innerHTML="⭐ "+score+" XP";
+
+    livesEl.innerHTML="❤️".repeat(lives);
+
+}
+
+function checkAnswer(index){
+
+    // Part 2
+    // We'll build this next
 
 }
 
@@ -106,6 +125,27 @@ function nextQuestion(){
 
     currentQuestion++;
 
+    if(lives<=0){
+
+        finishQuiz();
+        return;
+
+    }
+
     loadQuestion();
+
+}
+
+function finishQuiz(){
+
+    clearInterval(timerInterval);
+
+    alert(
+        "🏆 Quiz Finished\n\n"+
+        "Score : "+score+
+        "\nLives : "+lives
+    );
+
+    location.reload();
 
 }
