@@ -4,33 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ArhamNest Sanskrit Quest</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<div class="container">
+<div id="homeScreen" class="container">
 
-<div class="logo">🏫</div>
+<div class="logo">🪔</div>
 
 <h1>ArhamNest Academy</h1>
 
-<h2>🪔 Sanskrit Quest</h2>
+<h2>Sanskrit Quest</h2>
 
-<p class="tagline">Learn • Play • Master Sanskrit</p>
+<p class="tagline">
+Learn • Play • Master Sanskrit
+</p>
 
 <input
-type="text"
 id="studentName"
+type="text"
 placeholder="👤 Enter Student Name">
 
 <select id="chapter">
+
 <option>Chapter 1 - वन्दना</option>
+
 <option>Chapter 2 - वर्णमाला</option>
+
 <option>Chapter 3 - शब्दरूप</option>
-<option>Worksheet 1</option>
+
 </select>
 
 <button id="startBtn">
@@ -39,13 +42,36 @@ placeholder="👤 Enter Student Name">
 
 </div>
 
-<script>
-document.getElementById("startBtn").onclick=function(){
+<div id="quizScreen" class="container" style="display:none;">
 
-window.location.href="quiz.html";
+<div class="top">
 
-}
-</script>
+<div id="lives">❤️❤️❤️</div>
+
+<div id="score">⭐ 0 XP</div>
+
+</div>
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+<h3 id="question"></h3>
+
+<div id="options"></div>
+
+<p id="message"></p>
+
+<button id="nextBtn">
+Next ➜
+</button>
+
+</div>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
