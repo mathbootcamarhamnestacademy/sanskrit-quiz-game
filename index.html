@@ -3,62 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>📚 Sanskrit Quiz Game</title>
+<title>ArhamNest Sanskrit Quest</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>📚 Sanskrit Quiz Game</h1>
+<div class="logo">🏫</div>
 
-<div class="topBar">
+<h1>ArhamNest Academy</h1>
 
-<div id="score">⭐ Score: 0</div>
+<h2>🪔 Sanskrit Quest</h2>
 
-<div id="lives">❤️❤️❤️</div>
+<p class="tagline">Learn • Play • Master Sanskrit</p>
 
-</div>
+<input
+type="text"
+id="studentName"
+placeholder="👤 Enter Student Name">
 
-<div class="progress">
+<select id="chapter">
+<option>Chapter 1 - वन्दना</option>
+<option>Chapter 2 - वर्णमाला</option>
+<option>Chapter 3 - शब्दरूप</option>
+<option>Worksheet 1</option>
+</select>
 
-<div id="progressBar"></div>
-
-</div>
-
-<h2 id="question">
-Loading...
-</h2>
-
-<div id="options">
-
-</div>
-
-<p id="result"></p>
-
-<button id="nextBtn">
-Next Question ➜
+<button id="startBtn">
+🚀 START QUEST
 </button>
 
 </div>
 
-<div id="finishScreen" style="display:none;">
+<script>
+document.getElementById("startBtn").onclick=function(){
 
-<h1>🎉 Quiz Completed!</h1>
+window.location.href="quiz.html";
 
-<h2 id="finalScore"></h2>
-
-<button onclick="location.reload()">
-Play Again
-</button>
-
-</div>
-
-<script src="questions.js"></script>
-<script src="script.js"></script>
+}
+</script>
 
 </body>
 </html>
