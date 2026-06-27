@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArhamNest Sanskrit Quest</title>
+
+<title>ArhamNest Academy | Sanskrit Quest</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="homeScreen" class="container">
+<!-- HOME SCREEN -->
+
+<div class="container" id="homeScreen">
 
 <div class="logo">🪔</div>
 
@@ -22,17 +26,18 @@ Learn • Play • Master Sanskrit
 </p>
 
 <input
-id="studentName"
 type="text"
+id="studentName"
 placeholder="👤 Enter Student Name">
 
 <select id="chapter">
 
-<option>Chapter 1 - वन्दना</option>
-
-<option>Chapter 2 - वर्णमाला</option>
-
-<option>Chapter 3 - शब्दरूप</option>
+<option value="1">Chapter 1 – वन्दना</option>
+<option value="2">Chapter 2 – शब्द परिचय</option>
+<option value="3">Chapter 3 – सर्वनाम</option>
+<option value="4">Chapter 4 – धातु</option>
+<option value="5">Chapter 5 – Numbers</option>
+<option value="6">Chapter 6 – Revision</option>
 
 </select>
 
@@ -42,9 +47,11 @@ placeholder="👤 Enter Student Name">
 
 </div>
 
-<div id="quizScreen" class="container" style="display:none;">
+<!-- QUIZ SCREEN -->
 
-<div class="top">
+<div class="container" id="quizScreen" style="display:none;">
+
+<div class="topBar">
 
 <div id="lives">❤️❤️❤️</div>
 
@@ -53,19 +60,35 @@ placeholder="👤 Enter Student Name">
 </div>
 
 <div class="progress">
-
 <div id="progressBar"></div>
-
 </div>
 
-<h3 id="question"></h3>
+<div class="quizHeader">
+<div id="timer">⏳ 30</div>
+</div>
+
+<h2 id="question">Loading...</h2>
 
 <div id="options"></div>
 
-<p id="message"></p>
+<p id="result"></p>
 
 <button id="nextBtn">
 Next ➜
+</button>
+
+</div>
+
+<!-- FINISH SCREEN -->
+
+<div class="container" id="finishScreen" style="display:none;">
+
+<h1>🏆 Quest Complete!</h1>
+
+<h2 id="finalScore"></h2>
+
+<button onclick="location.reload()">
+🔄 Play Again
 </button>
 
 </div>
