@@ -1,5 +1,6 @@
 // =======================================================
 // ArhamNest Academy - Sanskrit Quest v1.0
+// Tailored script.js
 // =======================================================
 
 let currentQuestion = 0;
@@ -7,13 +8,16 @@ let score = 0;
 let lives = 3;
 let timer = 30;
 let timerInterval = null;
-let transitionTimeout = null; // Fix: Tracks background timeouts to prevent skipping
+let transitionTimeout = null; 
+let questions = []; // Active question pool
 
+// Elements matched perfectly to your index.html IDs
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
 const finishScreen = document.getElementById("finishScreen");
 
 const studentName = document.getElementById("studentName");
+const chapterSelect = document.getElementById("chapter"); // Matches id="chapter"
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
@@ -37,6 +41,16 @@ function startQuest() {
         return;
     }
 
+    const selectedChapter = chapterSelect.value; // Will be "1", "2", "3", etc.
+
+    // Checks if allQuestions exists in questions.js and pulls the selected chapter data
+    if (typeof allQuestions !== "undefined" && allQuestions[selectedChapter]) {
+        questions = allQuestions[selectedChapter];
+    } else {
+        alert("No questions found for this chapter yet!");
+        return;
+    }
+
     currentQuestion = 0;
     score = 0;
     lives = 3;
@@ -50,7 +64,7 @@ function startQuest() {
 
 function loadQuestion() {
     clearInterval(timerInterval);
-    clearTimeout(transitionTimeout); // Fix: Stops any leftover timers from previous screens
+    clearTimeout(transitionTimeout);
 
     if (currentQuestion >= questions.length) {
         finishQuiz();
@@ -93,7 +107,6 @@ function startTimer() {
             resultEl.textContent = "⏰ Time's Up!";
             resultEl.style.color = "red";
 
-            // Fix: Store the timeout ID
             transitionTimeout = setTimeout(() => {
                 currentQuestion++;
                 if (lives <= 0) {
@@ -144,7 +157,6 @@ function checkAnswer(index) {
 
     updateHeader();
 
-    // Fix: Store the timeout ID
     transitionTimeout = setTimeout(() => {
         currentQuestion++;
         if (lives <= 0 || currentQuestion >= questions.length) {
@@ -157,7 +169,7 @@ function checkAnswer(index) {
 
 function nextQuestion() {
     clearInterval(timerInterval);
-    clearTimeout(transitionTimeout); // Fix: Clear transition timer if they manual-skip
+    clearTimeout(transitionTimeout);
 
     currentQuestion++;
 
@@ -171,7 +183,7 @@ function nextQuestion() {
 
 function finishQuiz() {
     clearInterval(timerInterval);
-    clearTimeout(transitionTimeout); // Fix: Clean up any racing timers
+    clearTimeout(transitionTimeout);
 
     quizScreen.style.display = "none";
     finishScreen.style.display = "block";
@@ -192,7 +204,6 @@ function finishQuiz() {
         message = "Well Done!";
     }
 
-    // Fix: Properly added the closing backtick (`) and semicolon below
     finalScore.innerHTML = `
         <h2>${message}</h2>
         <h3>👤 ${studentName.value}</h3>
@@ -200,12 +211,10 @@ function finishQuiz() {
         <p>⭐ XP : <b>${score}</b></p>
         <p>📊 Score : <b>${percentage}%</b></p>
         <h2>${medal}</h2>
-    `; 
+    `;
 }
 
-// Start with the home screen visible
+// Initial view states
 homeScreen.style.display = "block";
 quizScreen.style.display = "none";
 finishScreen.style.display = "none";
-
-```
