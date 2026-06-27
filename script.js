@@ -279,9 +279,7 @@ function finishQuiz() {
 
         <h2>${medal}</h2>
 
-        <button onclick="location.reload()">
-            🔄 Play Again
-        </button>
+    
     `;
 }
 
