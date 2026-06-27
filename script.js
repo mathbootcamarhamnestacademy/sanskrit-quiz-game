@@ -1,6 +1,6 @@
 // =======================================================
 // ArhamNest Academy - Sanskrit Quest v1.0
-// Tailored script.js
+// Engine Logic File
 // =======================================================
 
 let currentQuestion = 0;
@@ -8,46 +8,47 @@ let score = 0;
 let lives = 3;
 let timer = 30;
 let timerInterval = null;
-let transitionTimeout = null; 
-let questions = []; // Active question pool
+let transitionTimeout = null;
+let questions = [];
 
-// Elements matched perfectly to your index.html IDs
+// DOM Elements
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
 const finishScreen = document.getElementById("finishScreen");
-
 const studentName = document.getElementById("studentName");
-const chapterSelect = document.getElementById("chapter"); // Matches id="chapter"
-
+const chapterSelect = document.getElementById("chapter");
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const resultEl = document.getElementById("result");
-
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
 const timerEl = document.getElementById("timer");
 const progressBar = document.getElementById("progressBar");
 const finalScore = document.getElementById("finalScore");
-
 const startBtn = document.getElementById("startBtn");
 const nextBtn = document.getElementById("nextBtn");
 
-startBtn.addEventListener("click", startQuest);
-nextBtn.addEventListener("click", nextQuestion);
+// Event Listeners
+if (startBtn) startBtn.addEventListener("click", startQuest);
+if (nextBtn) nextBtn.addEventListener("click", nextQuestion);
 
 function startQuest() {
-    if (studentName.value.trim() === "") {
-        alert("Please enter your name.");
+    if (!studentName || studentName.value.trim() === "") {
+        alert("Please enter your name to begin!");
         return;
     }
 
-    const selectedChapter = chapterSelect.value; // Will be "1", "2", "3", etc.
+    if (typeof allQuestions === "undefined") {
+        alert("Error: 'questions.js' didn't load properly. Check script order in index.html.");
+        return;
+    }
 
-    // Checks if allQuestions exists in questions.js and pulls the selected chapter data
-    if (typeof allQuestions !== "undefined" && allQuestions[selectedChapter]) {
+    const selectedChapter = chapterSelect ? chapterSelect.value : "1";
+    
+    if (allQuestions[selectedChapter] && allQuestions[selectedChapter].length > 0) {
         questions = allQuestions[selectedChapter];
     } else {
-        alert("No questions found for this chapter yet!");
+        alert("No questions configured for this chapter yet!");
         return;
     }
 
@@ -55,9 +56,9 @@ function startQuest() {
     score = 0;
     lives = 3;
 
-    homeScreen.style.display = "none";
-    finishScreen.style.display = "none";
-    quizScreen.style.display = "block";
+    if (homeScreen) homeScreen.style.display = "none";
+    if (finishScreen) finishScreen.style.display = "none";
+    if (quizScreen) quizScreen.style.display = "block";
 
     loadQuestion();
 }
@@ -74,38 +75,44 @@ function loadQuestion() {
     timer = 30;
     updateHeader();
 
-    progressBar.style.width = ((currentQuestion + 1) / questions.length) * 100 + "%";
+    if (progressBar) {
+        progressBar.style.width = ((currentQuestion + 1) / questions.length) * 100 + "%";
+    }
 
     const q = questions[currentQuestion];
-    questionEl.textContent = q.question;
-    resultEl.textContent = "";
-    optionsEl.innerHTML = "";
-
-    q.options.forEach((option, index) => {
-        const btn = document.createElement("button");
-        btn.className = "option";
-        btn.textContent = option;
-        btn.onclick = () => checkAnswer(index);
-        optionsEl.appendChild(btn);
-    });
+    if (questionEl) questionEl.textContent = q.question;
+    if (resultEl) resultEl.textContent = "";
+    
+    if (optionsEl) {
+        optionsEl.innerHTML = "";
+        q.options.forEach((option, index) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.textContent = option;
+            btn.onclick = () => checkAnswer(index);
+            optionsEl.appendChild(btn);
+        });
+    }
 
     startTimer();
 }
 
 function startTimer() {
-    timerEl.textContent = "⏳ " + timer;
+    if (timerEl) timerEl.textContent = "⏳ " + timer;
 
     timerInterval = setInterval(() => {
         timer--;
-        timerEl.textContent = "⏳ " + timer;
+        if (timerEl) timerEl.textContent = "⏳ " + timer;
 
         if (timer <= 0) {
             clearInterval(timerInterval);
             lives--;
             updateHeader();
 
-            resultEl.textContent = "⏰ Time's Up!";
-            resultEl.style.color = "red";
+            if (resultEl) {
+                resultEl.textContent = "⏰ Time's Up!";
+                resultEl.style.color = "red";
+            }
 
             transitionTimeout = setTimeout(() => {
                 currentQuestion++;
@@ -120,8 +127,8 @@ function startTimer() {
 }
 
 function updateHeader() {
-    scoreEl.textContent = "⭐ " + score + " XP";
-    livesEl.textContent = "❤️".repeat(lives);
+    if (scoreEl) scoreEl.textContent = "⭐ " + score + " XP";
+    if (livesEl) livesEl.textContent = "❤️".repeat(Math.max(0, lives));
 }
 
 function checkAnswer(index) {
@@ -132,12 +139,10 @@ function checkAnswer(index) {
 
     buttons.forEach((btn, i) => {
         btn.disabled = true;
-
         if (i === q.answer) {
             btn.style.background = "#4CAF50";
             btn.style.color = "#fff";
         }
-
         if (i === index && index !== q.answer) {
             btn.style.background = "#F44336";
             btn.style.color = "#fff";
@@ -146,13 +151,17 @@ function checkAnswer(index) {
 
     if (index === q.answer) {
         score += 10;
-        resultEl.innerHTML = "✅ Correct! +10 XP";
-        resultEl.style.color = "green";
+        if (resultEl) {
+            resultEl.innerHTML = "✅ Correct! +10 XP";
+            resultEl.style.color = "green";
+        }
     } else {
         lives--;
         score = Math.max(0, score - 5);
-        resultEl.innerHTML = "❌ Wrong!<br>Correct Answer: <b>" + q.options[q.answer] + "</b>";
-        resultEl.style.color = "red";
+        if (resultEl) {
+            resultEl.innerHTML = "❌ Wrong!<br>Correct: <b>" + q.options[q.answer] + "</b>";
+            resultEl.style.color = "red";
+        }
     }
 
     updateHeader();
@@ -170,51 +179,44 @@ function checkAnswer(index) {
 function nextQuestion() {
     clearInterval(timerInterval);
     clearTimeout(transitionTimeout);
-
     currentQuestion++;
-
     if (lives <= 0 || currentQuestion >= questions.length) {
         finishQuiz();
-        return;
+    } else {
+        loadQuestion();
     }
-
-    loadQuestion();
 }
 
 function finishQuiz() {
     clearInterval(timerInterval);
     clearTimeout(transitionTimeout);
 
-    quizScreen.style.display = "none";
-    finishScreen.style.display = "block";
+    if (quizScreen) quizScreen.style.display = "none";
+    if (finishScreen) finishScreen.style.display = "block";
 
-    const percentage = Math.round((score / (questions.length * 10)) * 100);
+    const totalPossible = questions.length * 10;
+    const percentage = totalPossible > 0 ? Math.round((score / totalPossible) * 100) : 0;
 
-    let medal = "🥉 Bronze Medal";
+    let medal = "专 Bronze Medal";
     let message = "Good Job!";
 
-    if (percentage >= 90) {
-        medal = "🥇 Gold Medal";
-        message = "Outstanding!";
-    } else if (percentage >= 70) {
-        medal = "🥈 Silver Medal";
-        message = "Excellent!";
-    } else if (percentage >= 50) {
-        medal = "🥉 Bronze Medal";
-        message = "Well Done!";
-    }
+    if (percentage >= 90) { medal = "🥇 Gold Medal"; message = "Outstanding!"; }
+    else if (percentage >= 70) { medal = "🥈 Silver Medal"; message = "Excellent!"; }
+    else if (percentage >= 50) { medal = "🥉 Bronze Medal"; message = "Well Done!"; }
 
-    finalScore.innerHTML = `
-        <h2>${message}</h2>
-        <h3>👤 ${studentName.value}</h3>
-        <hr>
-        <p>⭐ XP : <b>${score}</b></p>
-        <p>📊 Score : <b>${percentage}%</b></p>
-        <h2>${medal}</h2>
-    `;
+    if (finalScore) {
+        finalScore.innerHTML = `
+            <h2>${message}</h2>
+            <h3>👤 ${studentName ? studentName.value : 'Student'}</h3>
+            <hr>
+            <p>⭐ XP Earned: <b>${score}</b></p>
+            <p>📊 Accuracy: <b>${percentage}%</b></p>
+            <h2>${medal}</h2>
+        `;
+    }
 }
 
-// Initial view states
-homeScreen.style.display = "block";
-quizScreen.style.display = "none";
-finishScreen.style.display = "none";
+// Global View States Setup
+if (homeScreen) homeScreen.style.display = "block";
+if (quizScreen) quizScreen.style.display = "none";
+if (finishScreen) finishScreen.style.display = "none";
