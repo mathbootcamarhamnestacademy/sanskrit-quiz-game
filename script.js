@@ -264,6 +264,11 @@ function finishQuiz() {
         medal = "🥉 Bronze Medal";
         message = "Well Done!";
 
+    } else {
+
+        medal = "📚 Keep Practicing";
+        message = "Don't Give Up!";
+
     }
 
     finalScore.innerHTML = `
@@ -278,9 +283,11 @@ function finishQuiz() {
         <p>📊 Score : <b>${percentage}%</b></p>
 
         <h2>${medal}</h2>
+    `;
 
 }
 
+       
 // Start with the home screen visible
 homeScreen.style.display = "block";
 quizScreen.style.display = "none";
