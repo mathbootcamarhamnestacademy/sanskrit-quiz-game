@@ -2,100 +2,110 @@ let currentQuestion = 0;
 let score = 0;
 let lives = 3;
 
+const homeScreen = document.getElementById("homeScreen");
+const quizScreen = document.getElementById("quizScreen");
+
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
-const resultEl = document.getElementById("result");
+
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
 const progressBar = document.getElementById("progressBar");
-const nextBtn = document.getElementById("nextBtn");
+const messageEl = document.getElementById("message");
 
-function loadQuestion() {
+document.getElementById("startBtn").onclick = startQuest;
+document.getElementById("nextBtn").onclick = nextQuestion;
 
-    if (currentQuestion >= questions.length || lives === 0) {
-        finishQuiz();
+function startQuest(){
+
+    homeScreen.style.display="none";
+    quizScreen.style.display="block";
+
+    currentQuestion=0;
+    score=0;
+    lives=3;
+
+    loadQuestion();
+}
+
+function loadQuestion(){
+
+    if(currentQuestion>=questions.length){
+        alert("🎉 Congratulations!\nYour Score : "+score);
+        location.reload();
         return;
     }
 
-    resultEl.textContent = "";
+    scoreEl.innerHTML="⭐ "+score+" XP";
+    livesEl.innerHTML="❤️".repeat(lives);
 
-    const q = questions[currentQuestion];
+    progressBar.style.width=
+    ((currentQuestion)/questions.length*100)+"%";
 
-    questionEl.textContent = q.question;
+    const q=questions[currentQuestion];
 
-    optionsEl.innerHTML = "";
+    questionEl.innerHTML=q.question;
 
-    q.options.forEach((option, index) => {
+    optionsEl.innerHTML="";
 
-        const btn = document.createElement("button");
+    messageEl.innerHTML="";
 
-        btn.className = "option";
+    q.options.forEach((option,index)=>{
 
-        btn.textContent = option;
+        const btn=document.createElement("button");
 
-        btn.onclick = () => checkAnswer(index);
+        btn.className="option";
+
+        btn.innerHTML=option;
+
+        btn.onclick=()=>checkAnswer(index);
 
         optionsEl.appendChild(btn);
 
     });
 
-    progressBar.style.width =
-        ((currentQuestion) / questions.length) * 100 + "%";
 }
 
-function checkAnswer(selected) {
+function checkAnswer(index){
 
-    const q = questions[currentQuestion];
+    const q=questions[currentQuestion];
 
-    const buttons = document.querySelectorAll(".option");
+    if(index===q.answer){
 
-    buttons.forEach(btn => btn.disabled = true);
+        score+=10;
 
-    if (selected === q.answer) {
+        messageEl.innerHTML="✅ Correct! +10 XP";
+        messageEl.style.color="green";
 
-        score += 10;
-
-        scoreEl.textContent = "⭐ Score: " + score;
-
-        resultEl.innerHTML = "✅ Correct! +10";
-
-        resultEl.style.color = "green";
-
-    } else {
+    }else{
 
         lives--;
 
-        livesEl.textContent = "❤️".repeat(lives);
+        score=Math.max(0,score-5);
 
-        resultEl.innerHTML =
-            "❌ Wrong! Correct answer: " +
-            q.options[q.answer];
+        messageEl.innerHTML=
+        "❌ Wrong! Correct Answer: "+q.options[q.answer];
 
-        resultEl.style.color = "red";
+        messageEl.style.color="red";
+
+        if(lives===0){
+
+            alert("💀 Game Over");
+
+            location.reload();
+
+            return;
+
+        }
+
     }
 
 }
 
-nextBtn.onclick = () => {
+function nextQuestion(){
 
     currentQuestion++;
 
     loadQuestion();
 
-};
-
-function finishQuiz() {
-
-    document.querySelector(".container").style.display = "none";
-
-    document.getElementById("finishScreen").style.display = "block";
-
-    document.getElementById("finalScore").innerHTML =
-        "⭐ Your Score: " + score +
-        "<br><br>🏆 " +
-        Math.round((score / (questions.length * 10)) * 100) +
-        "%";
-
 }
-
-loadQuestion();
