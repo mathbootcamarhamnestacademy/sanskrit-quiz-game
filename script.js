@@ -195,57 +195,32 @@ function checkAnswer(index){
 
         }
 
-    },2000);
-
-}
-function finishQuiz(){
+        function finishQuiz(){
 
     clearInterval(timerInterval);
 
     quizScreen.style.display="none";
     finishScreen.style.display="block";
 
-    let percentage=Math.round((score/(questions.length*10))*100);
+    let percentage = Math.round((score/(questions.length*10))*100);
 
-    let medal="🥉 Bronze Medal";
-    let message="Good Job!";
+    let medal="🥉 Bronze";
 
     if(percentage>=90){
-
-        medal="🥇 Gold Medal";
-        message="Outstanding!";
-
+        medal="🥇 Gold";
     }else if(percentage>=70){
-
-        medal="🥈 Silver Medal";
-        message="Excellent!";
-
-    }else if(percentage>=50){
-
-        medal="🥉 Bronze Medal";
-        message="Well Done!";
+        medal="🥈 Silver";
     }
 
     finalScore.innerHTML=`
-
-        <h2>${message}</h2>
-
-        <h3>👤 ${studentName.value}</h3>
-
-        <hr>
-
-        <p>⭐ XP : <b>${score}</b></p>
-
-        <p>📊 Accuracy : <b>${percentage}%</b></p>
-
-        <p>${medal}</p>
-
-        <br>
-
-        <button onclick="location.reload()">
-        🔄 Play Again
-        </button>
-
+        <h2>🎉 Congratulations!</h2>
+        <h3>${studentName.value}</h3>
+        <p>⭐ XP: ${score}</p>
+        <p>📊 Score: ${percentage}%</p>
+        <h1>${medal}</h1>
     `;
+
+}
+    
 
 }
