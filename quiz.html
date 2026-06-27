@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>ArhamNest Academy - Sanskrit Quiz</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 Sanskrit Quiz</h1>
+
+<div class="topBar">
+<div id="score">⭐ Score: 0</div>
+<div id="lives">❤️❤️❤️</div>
+</div>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+<h2 id="question">Loading...</h2>
+
+<div id="options"></div>
+
+<p id="result"></p>
+
+<button id="nextBtn">Next Question ➜</button>
+
+</div>
+
+<div id="finishScreen" style="display:none;">
+<h1>🎉 Quiz Completed!</h1>
+<h2 id="finalScore"></h2>
+
+<button onclick="location.reload()">Play Again</button>
+</div>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
