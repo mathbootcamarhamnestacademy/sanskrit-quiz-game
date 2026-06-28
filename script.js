@@ -1,8 +1,6 @@
-// Import Firebase functions from the CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-// Your Firebase configuration (Use the exact keys from your Firebase Console)
 const firebaseConfig = {
   apiKey: "AIzaSyBEd1ylBG88RIF8EVvrxoS2tFFKhpPzGpQ",
   authDomain: "sanskrit-quest.firebaseapp.com",
@@ -12,21 +10,27 @@ const firebaseConfig = {
   appId: "1:983562344506:web:66662e460343b070687d03"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Add listener to the login button
-document.getElementById('loginBtn').addEventListener('click', () => {
-    const email = document.getElementById('authEmail').value;
-    const password = document.getElementById('authPassword').value;
+// Use DOMContentLoaded to make sure buttons exist before we add events
+document.addEventListener('DOMContentLoaded', () => {
+    
+    document.getElementById('loginBtn').addEventListener('click', () => {
+        const email = document.getElementById('authEmail').value;
+        const password = document.getElementById('authPassword').value;
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            alert("Login Successful!");
-            // Switch screens here
-        })
-        .catch((error) => {
-            alert("Login Failed: " + error.message);
-        });
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => alert("Login successful!"))
+            .catch((error) => alert("Login error: " + error.message));
+    });
+
+    document.getElementById('signupBtn').addEventListener('click', () => {
+        const email = document.getElementById('authEmail').value;
+        const password = document.getElementById('authPassword').value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(() => alert("Account created! You can now log in."))
+            .catch((error) => alert("Registration error: " + error.message));
+    });
 });
