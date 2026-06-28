@@ -1,17 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Get the topic from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const chapterId = urlParams.get('topic');
-    
-    // Check if chapter exists, if not, redirect to dashboard
-    if (!allQuestions[chapterId]) {
-        window.location.href = 'dashboard.html';
+    // 1. Immediate check: Does the data exist?
+    if (typeof allQuestions === 'undefined') {
+        document.getElementById('question').innerText = "Critical Error: questions.js not loaded!";
+        console.error("allQuestions is undefined. Check if questions.js is loaded in quiz.html before script.js");
         return;
     }
 
+    // 2. Extract and Validate Topic
+    const urlParams = new URLSearchParams(window.location.search);
+    const chapterId = urlParams.get('topic');
     const questions = allQuestions[chapterId];
 
-    // 2. Setup Variables
+    if (!questions) {
+        document.getElementById('question').innerText = "Topic not found. Please return to dashboard.";
+        console.error("No questions found for topic:", chapterId);
+        return;
+    }
+
+    // 3. Setup Logic
     let currentQ = 0;
     let score = 0;
     let lives = 3;
@@ -25,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerEl = document.getElementById('timer');
     const progressBar = document.getElementById('progressBar');
 
-    // 3. Timer Logic
     function startTimer() {
         timer = 30;
         timerEl.innerText = `⏳ ${timer}`;
@@ -35,12 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
             timerEl.innerText = `⏳ ${timer}`;
             if (timer <= 0) {
                 clearInterval(countdown);
-                handleAnswer(-1); // Time out counts as wrong
+                handleAnswer(-1); // Timeout
             }
         }, 1000);
     }
 
-    // 4. Load Question
     function loadQuestion() {
         if (currentQ >= questions.length) {
             document.querySelector('.container').style.display = 'none';
@@ -51,16 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const qData = questions[currentQ];
         questionEl.innerText = qData.question;
-        optionsEl.innerHTML = '';
+        optionsEl.innerHTML = ''; // Clear old buttons
         
-        // Update Progress Bar
+        // Progress bar
         const progress = ((currentQ) / questions.length) * 100;
-        progressBar.style.width = progress + '%';
+        if(progressBar) progressBar.style.width = progress + '%';
 
         qData.options.forEach((opt, index) => {
             const btn = document.createElement('button');
             btn.innerText = opt;
-            btn.className = 'option'; // Matches your CSS
+            btn.className = 'option';
             btn.onclick = () => handleAnswer(index);
             optionsEl.appendChild(btn);
         });
@@ -68,12 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
         startTimer();
     }
 
-    // 5. Answer Handler
     function handleAnswer(index) {
         clearInterval(countdown);
-        const correct = questions[currentQ].answer;
-        
-        if (index === correct) {
+        if (index === questions[currentQ].answer) {
             score += 10;
             scoreEl.innerText = `⭐ Score: ${score}`;
         } else {
@@ -90,6 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize Quiz
+    // 4. Force Start
     loadQuestion();
 });
