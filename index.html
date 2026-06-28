@@ -8,22 +8,18 @@
 </head>
 <body>
 
-    <!-- 1. AUTH SCREEN (LOGIN / SIGNUP) -->
     <div class="container" id="authScreen">
         <div class="logo">🔐</div>
         <h1>ArhamNest Academy</h1>
         <h2>Student Portal</h2>
-        
         <input type="email" id="authEmail" placeholder="📧 Student Email">
         <input type="password" id="authPassword" placeholder="🔑 Password">
-        
         <div style="display: flex; gap: 10px; margin-top: 15px; width: 100%;">
             <button id="loginBtn" style="flex: 1;">➜ Login</button>
             <button id="signupBtn" style="flex: 1; background: #666;">📝 Register</button>
         </div>
     </div>
 
-    <!-- 2. HOME SCREEN (Appears after successful Login) -->
     <div class="container" id="homeScreen" style="display:none;">
         <div class="topBar">
             <span id="userGreeting" style="font-weight: bold; color: #555;">👤 Loading...</span>
@@ -32,78 +28,45 @@
         <div class="logo">🪔</div>
         <h1>ArhamNest Academy</h1>
         <h2>Sanskrit Quest</h2>
-        <p class="tagline">Learn • Play • Master Sanskrit</p>
-
         <select id="chapter">
             <option value="1">Chapter 1 – वन्दना (Prayer)</option>
             <option value="2">Chapter 2 – शब्द परिचय (Nouns)</option>
-            <option value="3">Chapter 3 – सर्वनाम (Pronouns)</option>
-            <option value="4">Chapter 4 – धातु परिचय (Verbs)</option>
-            <option value="5">Chapter 5 – संख्या (Numbers)</option>
-            <option value="6">Chapter 6 – मिश्रित अभ्यास (Revision)</option>
         </select>
-
         <button id="startBtn">🚀 START QUEST</button>
     </div>
 
-    <!-- 3. QUIZ SCREEN -->
     <div class="container" id="quizScreen" style="display:none;">
-        <div class="topBar">
-            <div id="lives">❤️❤️❤️</div>
-            <div id="score">⭐ 0 XP</div>
-        </div>
-
-        <div class="progress">
-            <div id="progressBar"></div>
-        </div>
-
-        <div class="quizHeader">
-            <div id="timer">⏳ 30</div>
-        </div>
-
+        <div class="topBar"><div id="lives">❤️❤️❤️</div><div id="score">⭐ 0 XP</div></div>
+        <div class="progress"><div id="progressBar"></div></div>
         <h2 id="question">Loading...</h2>
         <div id="options"></div>
         <p id="result"></p>
-
         <button id="nextBtn">Next ➜</button>
     </div>
 
-    <!-- 4. FINISH SCREEN -->
     <div class="container" id="finishScreen" style="display:none;">
         <h1>🏆 Quest Complete!</h1>
         <div id="finalScore"></div>
         <button onclick="location.reload()">🔄 Play Again</button>
     </div>
 
-    <!-- FIREBASE MODULE LIBRARIES -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-
-    <!-- GAME ENGINE SYSTEM MODES (CACHE BUSTER FORCED TO V1.7) -->
+    <script type="module">
+        // Import your logic here or ensure script.js handles the init
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyBEd1ylBG88RIF8EVvrxoS2tFFKhpPzGpQ",
+            authDomain: "sanskrit-quest.firebaseapp.com",
+            projectId: "sanskrit-quest",
+            storageBucket: "sanskrit-quest.firebasestorage.app",
+            messagingSenderId: "983562344506",
+            appId: "1:983562344506:web:66662e460343b070687d03"
+        };
+        initializeApp(firebaseConfig);
+    </script>
+    
     <script src="questions.js?v=1.7"></script>
     <script src="script.js?v=1.7"></script>
 
 </body>
-</html>
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-      import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyBEd1ylBG88RIF8EVvrxoS2tFFKhpPzGpQ",
-        authDomain: "sanskrit-quest.firebaseapp.com",
-        projectId: "sanskrit-quest",
-        storageBucket: "sanskrit-quest.firebasestorage.app",
-        messagingSenderId: "983562344506",
-        appId: "1:983562344506:web:66662e460343b070687d03"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
-      console.log("Firebase linked!");
-    </script>
-  </body>
 </html>
