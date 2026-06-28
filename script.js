@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
+// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBEd1ylBG88RIF8EVvrxoS2tFFKhpPzGpQ",
   authDomain: "sanskrit-quest.firebaseapp.com",
@@ -10,21 +11,29 @@ const firebaseConfig = {
   appId: "1:983562344506:web:66662e460343b070687d03"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Use DOMContentLoaded to make sure buttons exist before we add events
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Login Functionality
     document.getElementById('loginBtn').addEventListener('click', () => {
         const email = document.getElementById('authEmail').value;
         const password = document.getElementById('authPassword').value;
 
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => alert("Login successful!"))
-            .catch((error) => alert("Login error: " + error.message));
+            .then(() => {
+                alert("Login successful!");
+                // Force an absolute path to the dashboard in your repository
+                window.location.assign("/sanskrit-quiz-game/dashboard.html");
+            })
+            .catch((error) => {
+                alert("Login error: " + error.message);
+            });
     });
 
+    // Register Functionality
     document.getElementById('signupBtn').addEventListener('click', () => {
         const email = document.getElementById('authEmail').value;
         const password = document.getElementById('authPassword').value;
