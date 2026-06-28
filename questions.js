@@ -1,10 +1,10 @@
 // =======================================================
 // ArhamNest Academy - Sanskrit Quest v1.4
-// Pure Localized Question Bank (Zero English in Questions & Options)
+// Pure Localized Question Bank (Zero English)
 // =======================================================
 
 const allQuestions = {
-  // CHAPTER 1 – वर्णमाला (Based on Worksheets 1 & 2)
+  // CHAPTER 1 – वर्णमाला (Worksheets 1 & 2)
   "1": [
     {
       question: "संस्कृत वर्णमाला में कुल स्वर कितने होते हैं?",
@@ -12,7 +12,7 @@ const allQuestions = {
       answer: 2
     },
     {
-      question: "ऊष्मव्यंजन कितने होते हैं?",
+      question: "ऊष्मव्यंजन कितने हैं?",
       options: ["११", "२", "४", "८"],
       answer: 2
     },
@@ -58,7 +58,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 2 – शब्द परिचय / संज्ञा (Based on Worksheet Words)
+  // CHAPTER 2 – शब्द परिचय / संज्ञा
   "2": [
     {
       question: "'बालकः' शब्द का उचित द्विवचन रूप क्या होगा?",
@@ -112,7 +112,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 3 – सर्वनाम परिचय (Based on Worksheet Exercises)
+  // CHAPTER 3 – सर्वनाम परिचय
   "3": [
     {
       question: "'त्वम्' शब्द का द्विवचन रूप क्या होगा?",
@@ -166,7 +166,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 4 – धातु परिचय / क्रिया (Based on Worksheet 3)
+  // CHAPTER 4 – धातु परिचय / क्रिया
   "4": [
     {
       question: "'पठति' रूप का मूल धातु क्या है?",
@@ -220,7 +220,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 5 – संख्या (Numbers up to 10)
+  // CHAPTER 5 – संख्या
   "5": [
     {
       question: "संख्या '३' को नपुंसकलिंग में क्या लिखते हैं?",
@@ -234,7 +234,7 @@ const allQuestions = {
     },
     {
       question: "संख्या '२' का पुल्लिंग रूप क्या होगा?",
-      options: ["द्वौ", "द्वे", "द्वयम्", "द्वितीयः"],
+      options: ["द्वौ", "द्वे", "द्वयम्", "विशिष्टः"],
       answer: 0
     },
     {
@@ -274,7 +274,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 6 – मिश्रित अभ्यास (Comprehensive Worksheet Review)
+  // CHAPTER 6 – मिश्रित अभ्यास
   "6": [
     {
       question: "'सिंहौ धावतः' इस वाक्य का सही अर्थ क्या है?",
