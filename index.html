@@ -1,19 +1,28 @@
-<button onclick="window.location.href='/sanskrit-quiz-game/worksheets.html'">
-  📚 Start Worksheets
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskrit Quest | Student Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<button onclick="window.location.href='/sanskrit-quiz-game/mental-math.html'">
-  🧠 Mental Math
-</button>
+    <div class="container" id="authScreen">
+        <div class="logo">🔐</div>
+        <h1>ArhamNest Academy</h1>
+        <h2>Sanskrit Quest Portal</h2>
+        
+        <input type="email" id="authEmail" placeholder="📧 Student Email">
+        <input type="password" id="authPassword" placeholder="🔑 Password">
+        
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <button id="loginBtn" style="flex: 1; background: #1565c0; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+            <button id="signupBtn" style="flex: 1; background: #666; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Register</button>
+        </div>
+    </div>
 
-<button onclick="window.location.href='/sanskrit-quiz-game/Login.html'">
-  🎓 Student Login
-</button>
+    <script type="module" src="script.js"></script>
 
-<button onclick="window.location.href='/sanskrit-quiz-game/teacher.html'">
-  👨‍🏫 Teacher Login
-</button>
-
-<button onclick="window.location.href='/sanskrit-quiz-game/parent.html'">
-  👨‍👩‍👧 Parent Login
-</button>
+</body>
+</html>
