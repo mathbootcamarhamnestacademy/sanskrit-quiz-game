@@ -1,10 +1,10 @@
 // =======================================================
-// ArhamNest Academy - Sanskrit Quest v1.5
-// Complete Pure Localized Question Bank (Zero English)
+// ArhamNest Academy - Sanskrit Quest v1.7
+// Localized Question Dataset Bank (Zero English Options)
 // =======================================================
 
 const allQuestions = {
-  // CHAPTER 1 – वन्दना (Prayer & Mantras)
+  // CHAPTER 1 – वन्दना
   "1": [
     {
       question: "गायत्री मन्त्र में 'भूः' पद का क्या अर्थ है?",
@@ -58,7 +58,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 2 – शब्द परिचय (Noun Identification & Blends)
+  // CHAPTER 2 – शब्द परिचय
   "2": [
     {
       question: "'म् + ऋ' के मेल से कौन सा शुद्ध रूप बनता है?",
@@ -112,7 +112,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 3 – सर्वनाम (Pronouns)
+  // CHAPTER 3 – सर्वनाम
   "3": [
     {
       question: "'अहम्' इस सर्वनाम पद का सही अर्थ क्या है?",
@@ -155,7 +155,7 @@ const allQuestions = {
       answer: 1
     },
     {
-      question: "'सह' का बहुवचन रूप क्या होगा (वह -> वे सब)?",
+      question: "'सह' का बहुवचन रूप क्या होगा?",
       options: ["तौ", "ते", "ताः", "तानि"],
       answer: 1
     },
@@ -166,7 +166,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 4 – धातु (Verbs & Action Words)
+  // CHAPTER 4 – धातु परिचय
   "4": [
     {
       question: "'गच्छति' क्रियापद का क्या अर्थ है?",
@@ -220,15 +220,15 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 5 – संख्या (Numbers)
+  // CHAPTER 5 – संख्या
   "5": [
     {
-      question: "संख्या '३' को नपुंसकलिंग में क्या लिखते हैं (जैसे- तीन पुस्तकें)?",
+      question: "संख्या '३' को नपुंसकलिंग में क्या लिखते हैं?",
       options: ["त्रयः", "तिस्रः", "त्रीणि", "तृतीयः"],
       answer: 2
     },
     {
-      question: "संख्या '१' को नपुंसकलिंग में क्या कहेंगे (जैसे- एक पुस्तक)?",
+      question: "संख्या '१' को नपुंसकलिंग में क्या कहेंगे?",
       options: ["एकः", "एका", "एकम्", "प्रथमः"],
       answer: 2
     },
@@ -258,7 +258,7 @@ const allQuestions = {
       answer: 2
     },
     {
-      question: "संख्या '४' का नपुंसकलिंग रूप क्या होता है (जैसे- चार पत्ते)?",
+      question: "संख्या '४' का नपुंसकलिंग रूप क्या होता है?",
       options: ["चत्वारः", "चतस्रः", "चत्वारि", "चतुर्थः"],
       answer: 2
     },
@@ -274,7 +274,7 @@ const allQuestions = {
     }
   ],
 
-  // CHAPTER 6 – मिश्रित अभ्यास (Revision)
+  // CHAPTER 6 – मिश्रित अभ्यास
   "6": [
     {
       question: "'मैं जाता हूँ' के लिए शुद्ध संस्कृत वाक्य क्या होगा?",
