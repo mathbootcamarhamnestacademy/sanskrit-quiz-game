@@ -1,5 +1,5 @@
 // =======================================================
-// ArhamNest Academy - Sanskrit Quest v1.0
+// ArhamNest Academy - Sanskrit Quest v1.4
 // Engine Logic File
 // =======================================================
 
@@ -110,7 +110,7 @@ function startTimer() {
             updateHeader();
 
             if (resultEl) {
-                resultEl.textContent = "⏰ Time's Up!";
+                resultEl.textContent = "⏰ समय समाप्त! (Time's Up!)";
                 resultEl.style.color = "red";
             }
 
@@ -152,14 +152,14 @@ function checkAnswer(index) {
     if (index === q.answer) {
         score += 10;
         if (resultEl) {
-            resultEl.innerHTML = "✅ Correct! +10 XP";
+            resultEl.innerHTML = "✅ उत्तमम्! +10 XP";
             resultEl.style.color = "green";
         }
     } else {
         lives--;
         score = Math.max(0, score - 5);
         if (resultEl) {
-            resultEl.innerHTML = "❌ Wrong!<br>Correct: <b>" + q.options[q.answer] + "</b>";
+            resultEl.innerHTML = "❌ अशुद्धम्!<br>सही उत्तर: <b>" + q.options[q.answer] + "</b>";
             resultEl.style.color = "red";
         }
     }
@@ -197,20 +197,20 @@ function finishQuiz() {
     const totalPossible = questions.length * 10;
     const percentage = totalPossible > 0 ? Math.round((score / totalPossible) * 100) : 0;
 
-    let medal = "专 Bronze Medal";
-    let message = "Good Job!";
+    let medal = "🥉 Bronze Medal";
+    let message = "सराहनीय प्रयास!";
 
-    if (percentage >= 90) { medal = "🥇 Gold Medal"; message = "Outstanding!"; }
-    else if (percentage >= 70) { medal = "🥈 Silver Medal"; message = "Excellent!"; }
-    else if (percentage >= 50) { medal = "🥉 Bronze Medal"; message = "Well Done!"; }
+    if (percentage >= 90) { medal = "🥇 Gold Medal"; message = "अति उत्तमम्! अति सुन्दरम्!"; }
+    else if (percentage >= 70) { medal = "🥈 Silver Medal"; message = "बहुत बढ़िया!"; }
+    else if (percentage >= 50) { medal = "🥉 Bronze Medal"; message = "उत्तम प्रयास!"; }
 
     if (finalScore) {
         finalScore.innerHTML = `
             <h2>${message}</h2>
             <h3>👤 ${studentName ? studentName.value : 'Student'}</h3>
-            <hr>
-            <p>⭐ XP Earned: <b>${score}</b></p>
-            <p>📊 Accuracy: <b>${percentage}%</b></p>
+            <hr style="border: 1px solid #ccc; margin: 10px 0;">
+            <p>⭐ कुल अर्जित XP: <b>${score}</b></p>
+            <p>📊 शुद्धता (Accuracy): <b>${percentage}%</b></p>
             <h2>${medal}</h2>
         `;
     }
