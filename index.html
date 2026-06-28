@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- HOME SCREEN -->
     <div class="container" id="homeScreen">
         <div class="logo">🪔</div>
         <h1>ArhamNest Academy</h1>
@@ -17,17 +18,18 @@
         <input type="text" id="studentName" placeholder="👤 Enter Student Name">
 
         <select id="chapter">
-            <option value="1">Chapter 1 – वन्दना</option>
-            <option value="2">Chapter 2 – शब्द परिचय</option>
-            <option value="3">Chapter 3 – सर्वनाम</option>
-            <option value="4">Chapter 4 – धातु</option>
-            <option value="5">Chapter 5 – Numbers</option>
-            <option value="6">Chapter 6 – Revision</option>
+            <option value="1">Chapter 1 – वर्णमाला</option>
+            <option value="2">Chapter 2 – शब्द परिचय / संज्ञा</option>
+            <option value="3">Chapter 3 – सर्वनाम परिचय</option>
+            <option value="4">Chapter 4 – धातु परिचय / क्रिया</option>
+            <option value="5">Chapter 5 – संख्या (Numbers)</option>
+            <option value="6">Chapter 6 – मिश्रित अभ्यास</option>
         </select>
 
         <button id="startBtn">🚀 START QUEST</button>
     </div>
 
+    <!-- QUIZ SCREEN -->
     <div class="container" id="quizScreen" style="display:none;">
         <div class="topBar">
             <div id="lives">❤️❤️❤️</div>
@@ -49,12 +51,14 @@
         <button id="nextBtn">Next ➜</button>
     </div>
 
+    <!-- FINISH SCREEN -->
     <div class="container" id="finishScreen" style="display:none;">
         <h1>🏆 Quest Complete!</h1>
         <div id="finalScore"></div>
         <button onclick="location.reload()">🔄 Play Again</button>
     </div>
 
+    <!-- THE CACHE-BUSTER VERSION (?v=1.4) FORCES MOBILE BROWSERS TO UPDATE -->
     <script src="questions.js?v=1.4"></script>
     <script src="script.js?v=1.4"></script>
 
