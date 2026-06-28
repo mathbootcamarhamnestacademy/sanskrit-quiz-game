@@ -1,5 +1,5 @@
 // =======================================================
-// ArhamNest Academy - Sanskrit Quest v1.4
+// ArhamNest Academy - Sanskrit Quest v1.5
 // Engine Logic File
 // =======================================================
 
@@ -11,7 +11,6 @@ let timerInterval = null;
 let transitionTimeout = null;
 let questions = [];
 
-// DOM Elements
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
 const finishScreen = document.getElementById("finishScreen");
@@ -28,7 +27,6 @@ const finalScore = document.getElementById("finalScore");
 const startBtn = document.getElementById("startBtn");
 const nextBtn = document.getElementById("nextBtn");
 
-// Event Listeners
 if (startBtn) startBtn.addEventListener("click", startQuest);
 if (nextBtn) nextBtn.addEventListener("click", nextQuestion);
 
@@ -39,7 +37,7 @@ function startQuest() {
     }
 
     if (typeof allQuestions === "undefined") {
-        alert("Error: 'questions.js' didn't load properly. Check script order in index.html.");
+        alert("Error: 'questions.js' didn't load properly.");
         return;
     }
 
@@ -216,7 +214,6 @@ function finishQuiz() {
     }
 }
 
-// Global View States Setup
 if (homeScreen) homeScreen.style.display = "block";
 if (quizScreen) quizScreen.style.display = "none";
 if (finishScreen) finishScreen.style.display = "none";
