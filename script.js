@@ -1,45 +1,80 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-// Your Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBEd1ylBG88RIF8EVvrxoS2tFFKhpPzGpQ",
-  authDomain: "sanskrit-quest.firebaseapp.com",
-  projectId: "sanskrit-quest",
-  storageBucket: "sanskrit-quest.firebasestorage.app",
-  messagingSenderId: "983562344506",
-  appId: "1:983562344506:web:66662e460343b070687d03"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
+// Ensure this script is loaded after questions.js
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Login Functionality
-    document.getElementById('loginBtn').addEventListener('click', () => {
-        const email = document.getElementById('authEmail').value;
-        const password = document.getElementById('authPassword').value;
+    const urlParams = new URLSearchParams(window.location.search);
+    const chapterId = urlParams.get('topic');
+    const questions = allQuestions[chapterId]; // Fetches data from questions.js
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                alert("Login successful!");
-                // Force an absolute path to the dashboard in your repository
-                window.location.assign("/sanskrit-quiz-game/dashboard.html");
-            })
-            .catch((error) => {
-                alert("Login error: " + error.message);
-            });
-    });
+    let currentQ = 0;
+    let score = 0;
+    let lives = 3;
+    let timer = 30;
+    let countdown;
 
-    // Register Functionality
-    document.getElementById('signupBtn').addEventListener('click', () => {
-        const email = document.getElementById('authEmail').value;
-        const password = document.getElementById('authPassword').value;
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const scoreEl = document.getElementById('score');
+    const livesEl = document.getElementById('lives');
+    const timerEl = document.getElementById('timer');
+    const nextBtn = document.getElementById('nextBtn');
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(() => alert("Account created! You can now log in."))
-            .catch((error) => alert("Registration error: " + error.message));
-    });
+    function startTimer() {
+        timer = 30;
+        timerEl.innerText = `⏳ ${timer}`;
+        clearInterval(countdown);
+        countdown = setInterval(() => {
+            timer--;
+            timerEl.innerText = `⏳ ${timer}`;
+            if (timer <= 0) {
+                clearInterval(countdown);
+                handleAnswer(-1); // Time out counts as wrong
+            }
+        }, 1000);
+    }
+
+    function loadQuestion() {
+        if (currentQ >= questions.length) {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('finishScreen').style.display = 'block';
+            document.getElementById('finalScore').innerText = `Your Score: ${score}`;
+            return;
+        }
+
+        const qData = questions[currentQ];
+        questionEl.innerText = qData.question;
+        optionsEl.innerHTML = '';
+        
+        qData.options.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.innerText = opt;
+            btn.className = 'optionBtn';
+            btn.onclick = () => handleAnswer(index);
+            optionsEl.appendChild(btn);
+        });
+
+        startTimer();
+    }
+
+    function handleAnswer(index) {
+        clearInterval(countdown);
+        const correct = questions[currentQ].answer;
+        
+        if (index === correct) {
+            score += 10;
+            scoreEl.innerText = `⭐ Score: ${score}`;
+        } else {
+            lives--;
+            livesEl.innerText = '❤️'.repeat(lives);
+        }
+
+        if (lives <= 0) {
+            alert("Game Over!");
+            location.href = 'dashboard.html';
+        } else {
+            currentQ++;
+            loadQuestion();
+        }
+    }
+
+    nextBtn.onclick = () => handleAnswer(-1); // Skip button
+    loadQuestion();
 });
