@@ -1,329 +1,329 @@
 // =======================================================
-// ArhamNest Academy - Sanskrit Quest v1.2
-// Comprehensive Data Bank (Chapters 1 to 6 Balanced)
+// ArhamNest Academy - Sanskrit Quest v1.4
+// Pure Localized Question Bank (Zero English in Questions & Options)
 // =======================================================
 
 const allQuestions = {
-  // CHAPTER 1 – वन्दना (PRAYER & MANTRAS)
+  // CHAPTER 1 – वर्णमाला (Based on Worksheets 1 & 2)
   "1": [
     {
-      question: "What is the meaning of 'भूः' in the Gayatri Mantra?",
-      options: ["Atmosphere", "Earth", "Heaven", "Water"],
-      answer: 1
-    },
-    {
-      question: "What does 'सवितुः' mean?",
-      options: ["Moon", "Star", "Sun / Creator", "Wind"],
+      question: "संस्कृत वर्णमाला में कुल स्वर कितने होते हैं?",
+      options: ["११", "३३", "१३", "५"],
       answer: 2
     },
     {
-      question: "The word 'धियो' translates to:",
-      options: ["Hearts", "Intellect / Thoughts", "Hands", "Eyes"],
-      answer: 1
+      question: "ऊष्मव्यंजन कितने होते हैं?",
+      options: ["११", "२", "४", "८"],
+      answer: 2
     },
     {
-      question: "What is the meaning of 'शरदः शतम्' in the Vedic prayer?",
-      options: ["100 Autumns / Years", "100 Days", "100 Months", "10 Seasons"],
+      question: "संयुक्त-स्वर कितने हैं?",
+      options: ["४", "२", "५", "७"],
       answer: 0
     },
     {
-      question: "Complete the phrase: 'गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो _________।'",
-      options: ["परब्रह्म", "महेश्वरः", "सदाशिवः", "नमस्तुभ्यम्"],
-      answer: 1
-    },
-    {
-      question: "What does 'साक्षात्' mean in English?",
-      options: ["Invisible", "Directly manifest / Before our eyes", "Far away", "Imaginary"],
-      answer: 1
-    },
-    {
-      question: "What is the Sanskrit word for 'Heaven' (from the phrase 'भूर्भुवः स्वः')?",
-      options: ["भूः", "भुवः", "स्वः", "धीमहि"],
-      answer: 2
-    },
-    {
-      question: "Complete the phrase: 'पश्येम शरदः शतम्, _________ शरदः शतम्।'",
-      options: ["जीवेम", "शृणुयाम", "प्रब्रवाम", "अदीनाः"],
+      question: "निम्न में संयुक्त-स्वर कौन सा है?",
+      options: ["ए", "अ", "आ", "इ"],
       answer: 0
     },
     {
-      question: "What does 'शृणुयाम' mean?",
-      options: ["May we see", "May we live", "May we hear", "May we speak"],
-      answer: 2
+      question: "स्पर्श व्यंजन कहाँ से कहाँ तक होते हैं?",
+      options: ["क् से म्", "ल् से व्", "श् से स्", "अ से अः"],
+      answer: 0
     },
     {
-      question: "What is the meaning of 'अदीनाः' in the context of the life prayer?",
-      options: ["Poor and weak", "Independent / Not helpless", "Proud", "Angry"],
+      question: "ह्रस्व स्वर कितने होते हैं?",
+      options: ["५", "६", "८", "३"],
+      answer: 0
+    },
+    {
+      question: "निम्न में दीर्घ स्वर कौन सा है?",
+      options: ["लृ", "आ", "त्", "क्"],
+      answer: 1
+    },
+    {
+      question: "निम्न में अन्तस्थव्यंजन कौन सा है?",
+      options: ["क्", "य्", "त्", "ष्"],
+      answer: 1
+    },
+    {
+      question: "'र् + आ + म् + अः' का सही वर्ण संयोजन क्या होगा?",
+      options: ["रमः", "रामः", "रामा", "रामम्"],
+      answer: 1
+    },
+    {
+      question: "'क् + अ + म् + अ + ल् + अ + म्' से क्या शब्द बनेगा?",
+      options: ["कमलः", "कमलम्", "कमला", "कामलम्"],
       answer: 1
     }
   ],
 
-  // CHAPTER 2 – शब्द परिचय (NOUN IDENTIFICATION & SPELLING BLENDS)
+  // CHAPTER 2 – शब्द परिचय / संज्ञा (Based on Worksheet Words)
   "2": [
     {
-      question: "What vowel blend does 'म् + ऋ' make?",
-      options: ["मा", "मी", "मृ", "मे"],
-      answer: 2
-    },
-    {
-      question: "Identify the word type for 'रामः' (र् + आ + म् + अ):",
-      options: ["अकारान्त (Ending in 'अ')", "आकारान्त (Ending in 'आ')", "इकारान्त", "उकारान्त"],
+      question: "'बालकः' शब्द का उचित द्विवचन रूप क्या होगा?",
+      options: ["बालकौ", "बालके", "बालकाः", "बालकम्"],
       answer: 0
     },
     {
-      question: "Identify the word type for 'लेखिका' (ल् + ए + ख् + इ + क + आ):",
-      options: ["अकारान्त", "आकारान्त (Ending in 'आ')", "ईकारान्त", "ऋकारान्त"],
+      question: "'अजा' शब्द का उचित द्विवचन रूप क्या होगा?",
+      options: ["अजौ", "अजे", "अजाः", "अजाम्"],
       answer: 1
     },
     {
-      question: "What is the meaning of 'छात्रौ'?",
-      options: ["One Student", "Two Students", "Many Students", "Teacher"],
+      question: "'फलम्' शब्द का उचित द्विवचन रूप क्या होगा?",
+      options: ["फले", "फलौ", "फलानि", "फलाः"],
+      answer: 0
+    },
+    {
+      question: "'नेत्रम्' शब्द का शुद्ध द्विवचन रूप क्या है?",
+      options: ["नेत्रौ", "नेत्रे", "नेत्राणि", "नेत्रः"],
       answer: 1
     },
     {
-      question: "What is the plural form (बहुवचन) of 'गजः'?",
-      options: ["गजौ", "गजे", "गजाः", "गजम्"],
+      question: "'मक्षिका' शब्द किस लिंग का उदाहरण है?",
+      options: ["पुल्लिंग", "स्त्रीलिंग", "नपुंसकलिंग", "उभयलिंग"],
+      answer: 1
+    },
+    {
+      question: "चित्र में बने बालक के लिए उचित संस्कृत शब्द क्या है?",
+      options: ["बालिका", "बालकः", "पत्रम्", "नरः"],
+      answer: 1
+    },
+    {
+      question: "चित्र में बने पत्ते (Leaf) के लिए संस्कृत शब्द क्या है?",
+      options: ["पुष्पम्", "फलम्", "पत्रम्", "वृक्षः"],
       answer: 2
     },
     {
-      question: "What is the English meaning of 'कलिका'?",
-      options: ["A full flower", "A bud", "A leaf", "A root"],
+      question: "'नायिका' शब्द का द्विवचन रूप क्या बनेगा?",
+      options: ["नायिकाः", "नायिके", "नायिको", "नायिकम्"],
       answer: 1
     },
     {
-      question: "Which of the following is a Neuter (नपुंसकलिंग) noun?",
-      options: ["बालकः", "लता", "फलम्", "सिंहः"],
-      answer: 2
+      question: "'चक्रम्' शब्द का द्विवचन रूप क्या होगा?",
+      options: ["चक्रे", "चक्राः", "चक्रौ", "चक्रानि"],
+      answer: 0
     },
     {
-      question: "What does the plural word 'पुस्तकानि' mean?",
-      options: ["One book", "Two books", "Many books", "Library"],
-      answer: 2
-    },
-    {
-      question: "How do you say 'Two Fruits' in Sanskrit?",
-      options: ["फलम्", "फले", "फलानि", "फलाः"],
-      answer: 1
-    },
-    {
-      question: "What gender type is the word 'मक्षिका' (Fly)?",
-      options: ["Masculine", "Feminine", "Neuter", "None of the above"],
+      question: "'गजः' शब्द का बहुवचन रूप क्या होता है?",
+      options: ["गजौ", "गजाः", "गजे", "गजम्"],
       answer: 1
     }
   ],
 
-  // CHAPTER 3 – सर्वनाम (PRONOUNS)
+  // CHAPTER 3 – सर्वनाम परिचय (Based on Worksheet Exercises)
   "3": [
     {
-      question: "What does the pronoun 'अहम्' mean?",
-      options: ["I", "You", "He", "They"],
+      question: "'त्वम्' शब्द का द्विवचन रूप क्या होगा?",
+      options: ["युवाम्", "यूयम्", "अहम्", "वयम्"],
       answer: 0
     },
     {
-      question: "What does the pronoun 'त्वम्' mean?",
-      options: ["I", "You (Singular)", "He", "We"],
+      question: "'त्वम्' शब्द का बहुवचन रूप क्या होगा?",
+      options: ["युवाम्", "यूयम्", "वयम्", "तौ"],
       answer: 1
     },
     {
-      question: "What does 'वयम्' mean?",
-      options: ["We all", "You all", "They all", "These two"],
-      answer: 0
-    },
-    {
-      question: "What is the Masculine Singular pronoun for 'He' / 'That'?",
-      options: ["सा", "सह", "तत्", "एषा"],
-      answer: 1
-    },
-    {
-      question: "What is the Feminine Singular pronoun for 'She' / 'That'?",
-      options: ["सह", "सा", "तत्", "ते"],
-      answer: 1
-    },
-    {
-      question: "What does the Neuter pronoun 'तत्' mean?",
-      options: ["He", "She", "It / That", "They"],
-      answer: 2
-    },
-    {
-      question: "What is the meaning of 'युवाम्'?",
-      options: ["I", "You two", "We two", "They two"],
-      answer: 1
-    },
-    {
-      question: "What does 'एषः' mean in Masculine context?",
-      options: ["That", "This", "Who", "What"],
-      answer: 1
-    },
-    {
-      question: "What is the plural form of 'सह' (He -> They all)?",
-      options: ["तौ", "ते", "ताः", "तानि"],
-      answer: 1
-    },
-    {
-      question: "Which pronoun represents 'We two'?",
-      options: ["अहम्", "आवाम्", "वयम्", "युवाम्"],
-      answer: 1
-    }
-  ],
-
-  // CHAPTER 4 – धातु (VERBS & ACTION WORDS)
-  "4": [
-    {
-      question: "What does the verb 'गच्छति' mean?",
-      options: ["Reads", "Goes", "Writes", "Runs"],
-      answer: 1
-    },
-    {
-      question: "What does 'पठति' mean?",
-      options: ["Reads / Studies", "Eats", "Sleeps", "Laughs"],
-      answer: 0
-    },
-    {
-      question: "Match the action for: 'फले पततः।'",
-      options: ["One fruit falls.", "Two fruits fall.", "Many fruits fall.", "Fruits are growing."],
-      answer: 1
-    },
-    {
-      question: "Complete the sentence: 'अजाः (Goats) _________।'",
-      options: ["चरति", "चरतः", "चरन्ति", "पठामि"],
-      answer: 2
-    },
-    {
-      question: "What is the meaning of 'खादति'?",
-      options: ["Drinks", "Eats", "Sings", "Plays"],
-      answer: 1
-    },
-    {
-      question: "If 'चलति' means walks (singular), what does 'चलन्ति' mean?",
-      options: ["Walks (Dual)", "Walks (Plural / Many)", "Ran away", "Will walk"],
-      answer: 1
-    },
-    {
-      question: "What is the correct verb pairing for 'अहम्' (I)?",
+      question: "रिक्त स्थान भरें: 'अहम् पुस्तकम् _________।'",
       options: ["पठति", "पठसि", "पठामि", "पठामः"],
       answer: 2
     },
     {
-      question: "What is the correct verb pairing for 'त्वम्' (You)?",
-      options: ["पठति", "पठसि", "पठामि", "पठथः"],
+      question: "रिक्त स्थान भरें: 'त्वम् कुत्र _________।'",
+      options: ["चलति", "चलसि", "चलथः", "चलामि"],
       answer: 1
     },
     {
-      question: "What does 'धावति' mean?",
-      options: ["Runs", "Sits", "Stands", "Looks"],
+      question: "रिक्त स्थान भरें: 'यूयम् पुस्तकम् _________।'",
+      options: ["पठसि", "पठथः", "पठथ", "पठामि"],
+      answer: 2
+    },
+    {
+      question: "'सा' शब्द का उचित बहुवचन रूप क्या होगा?",
+      options: ["ते", "ताः", "तौ", "तानि"],
+      answer: 1
+    },
+    {
+      question: "'कः' शब्द का बहुवचन रूप क्या होगा?",
+      options: ["कौ", "के", "काः", "कम्"],
+      answer: 1
+    },
+    {
+      question: "'माम्' शब्द का बहुवचन रूप क्या होगा?",
+      options: ["आवाम्", "अस्मान्", "वयम्", "मह्यम्"],
+      answer: 1
+    },
+    {
+      question: "'तम्' शब्द का बहुवचन रूप क्या होगा?",
+      options: ["तान्", "ते", "ताः", "तौ"],
       answer: 0
     },
     {
-      question: "What does 'हसतः' indicate?",
-      options: ["One person laughs", "Two people laugh", "Many people laugh", "No one laughs"],
+      question: "'अहम्' शब्द का बहुवचन रूप क्या होता है?",
+      options: ["आवाम्", "वयम्", "त्वम्", "यूयम्"],
       answer: 1
     }
   ],
 
-  // CHAPTER 5 – NUMBERS (संख्या)
+  // CHAPTER 4 – धातु परिचय / क्रिया (Based on Worksheet 3)
+  "4": [
+    {
+      question: "'पठति' रूप का मूल धातु क्या है?",
+      options: ["पठ्", "पाठ्", "पच्", "पत्"],
+      answer: 0
+    },
+    {
+      question: "'चलति' रूप का मूल धातु क्या है?",
+      options: ["चल्र्", "चल्", "चाल्", "चर"],
+      answer: 1
+    },
+    {
+      question: "'असि' रूप का मूल धातु क्या है?",
+      options: ["आस्", "अस्", "भू", "हस्"],
+      answer: 1
+    },
+    {
+      question: "'लिखामः' रूप का मूल धातु क्या है?",
+      options: ["लिख्", "लेख्", "चल", "पठ्"],
+      answer: 0
+    },
+    {
+      question: "'हसन्ति' रूप का मूल धातु क्या है?",
+      options: ["हस्", "हास्", "ह्रस्", "खाद्"],
+      answer: 0
+    },
+    {
+      question: "'लिखति' का प्रथम पुरुष द्विवचन रूप क्या होगा?",
+      options: ["लिखति", "लिखतः", "लिखन्ति", "लिखसि"],
+      answer: 1
+    },
+    {
+      question: "'लिखति' का प्रथम पुरुष बहुवचन रूप क्या होगा?",
+      options: ["लिखतः", "लिखन्ति", "लिखामः", "लिखथ"],
+      answer: 1
+    },
+    {
+      question: "'पठसि' का मध्यम पुरुष द्विवचन रूप क्या होगा?",
+      options: ["पठथः", "पठथ", "पठतः", "पठामि"],
+      answer: 0
+    },
+    {
+      question: "'पठसि' का मध्यम पुरुष बहुवचन रूप क्या होगा?",
+      options: ["पठथः", "पठथ", "पठन्ति", "पठामः"],
+      answer: 1
+    },
+    {
+      question: "'अस्ति' का प्रथम पुरुष बहुवचन रूप क्या होता है?",
+      options: ["स्तः", "सन्ति", "असि", "स्थः"],
+      answer: 1
+    }
+  ],
+
+  // CHAPTER 5 – संख्या (Numbers up to 10)
   "5": [
     {
-      question: "What is the Sanskrit word for number 1 in Neuter form (e.g., One Book)?",
+      question: "संख्या '३' को नपुंसकलिंग में क्या लिखते हैं?",
+      options: ["त्रयः", "तिस्रः", "त्रीणि", "तृतीयः"],
+      answer: 2
+    },
+    {
+      question: "संख्या '१' को नपुंसकलिंग (जैसे- पुस्तकम्) में क्या कहेंगे?",
       options: ["एकः", "एका", "एकम्", "प्रथमः"],
       answer: 2
     },
     {
-      question: "What is the Masculine form of number 2?",
+      question: "संख्या '२' का पुल्लिंग रूप क्या होगा?",
       options: ["द्वौ", "द्वे", "द्वयम्", "द्वितीयः"],
       answer: 0
     },
     {
-      question: "What does 'त्रीणि' mean?",
-      options: ["Two", "Three", "Four", "Five"],
-      answer: 1
-    },
-    {
-      question: "Translate number 5 into Sanskrit:",
+      question: "संस्कृत में संख्या '५' को क्या कहते हैं?",
       options: ["पञ्च", "षट्", "सप्त", "अष्ट"],
       answer: 0
     },
     {
-      question: "What number does 'षट्' represent?",
-      options: ["4", "5", "6", "7"],
+      question: "'षट्' शब्द किस संख्या को दर्शाता है?",
+      options: ["४", "५", "६", "७"],
       answer: 2
     },
     {
-      question: "What is the Sanskrit name for number 7?",
+      question: "संख्या '७' के लिए उचित संस्कृत शब्द क्या है?",
       options: ["सप्त", "अष्ट", "नव", "दश"],
       answer: 0
     },
     {
-      question: "What does 'दश' translate to?",
-      options: ["8", "9", "10", "100"],
+      question: "'दश' शब्द का सही अर्थ क्या है?",
+      options: ["८", "९", "१०", "१००"],
       answer: 2
     },
     {
-      question: "How do you write number 4 in Neuter form (e.g., Four Leaves)?",
+      question: "संख्या '४' का नपुंसकलिंग रूप क्या होता है?",
       options: ["चत्वारः", "चतस्रः", "चत्वारि", "चतुर्थः"],
       answer: 2
     },
     {
-      question: "What does 'नव' mean?",
-      options: ["New", "Nine", "Name", "No"],
-      answer: 1
+      question: "संख्या '९' को संस्कृत में क्या कहते हैं?",
+      options: ["नव", "नवा", "नूतन", "नवकम्"],
+      answer: 0
     },
     {
-      question: "What number comes immediately after 'सप्त'?",
+      question: "'सप्त' संख्या के ठीक बाद कौन सी संख्या आती है?",
       options: ["षट्", "अष्ट", "नव", "दश"],
       answer: 1
     }
   ],
 
-  // CHAPTER 6 – REVISION (मिश्रित अभ्यास)
+  // CHAPTER 6 – मिश्रित अभ्यास (Comprehensive Worksheet Review)
   "6": [
     {
-      question: "Choose the correct expression for: 'I go.'",
-      options: ["अहम् गच्छति", "अहम् गच्छसि", "अहम् गच्छामि", "त्वम् गच्छामि"],
+      question: "'सिंहौ धावतः' इस वाक्य का सही अर्थ क्या है?",
+      options: ["एक शेर दौड़ता है", "दो शेर दौड़ते हैं", "अनेक शेर दौड़ते हैं", "शेर सो रहा है"],
+      answer: 1
+    },
+    {
+      question: "'अजाः चरन्ति' इस वाक्य में क्रियापद का वचन क्या है?",
+      options: ["एकवचन", "द्विवचन", "बहुवचन", "द्वंद्व"],
       answer: 2
     },
     {
-      question: "Choose the correct expression for: 'You read.'",
-      options: ["त्वम् पठति", "त्वम् पठसि", "अहम् पठसि", "वयम् पठामः"],
-      answer: 1
-    },
-    {
-      question: "What is the meaning of 'बालकः'?",
-      options: ["Girl", "Boy", "Man", "Woman"],
-      answer: 1
-    },
-    {
-      question: "What is the meaning of 'सीता'?",
-      options: ["Girl / Proper Name", "Boy", "River", "Mountain"],
+      question: "'भवनम्' शब्द का सही हिंदी अर्थ क्या है?",
+      options: ["घर / इमारत", "जंगल", "रास्ता", "मंदिर"],
       answer: 0
     },
     {
-      question: "What does 'भवनम्' mean?",
-      options: ["House / Building", "Forest", "Road", "Temple"],
-      answer: 0
+      question: "'खादति' क्रियापद का अर्थ क्या होता है?",
+      options: ["पीना", "खाना", "गाना", "खेलना"],
+      answer: 1
     },
     {
-      question: "What is the plural form of 'कलिका' (Bud)?",
+      question: "'वयम्' इस सर्वनाम पद का सही अर्थ क्या है?",
+      options: ["मैं", "हम दोनों", "हम सब", "तुम सब"],
+      answer: 2
+    },
+    {
+      question: "'कलिका' शब्द का सही बहुवचन रूप क्या है?",
       options: ["कलिके", "कलिकाः", "कलिकानि", "कलिका"],
       answer: 1
     },
     {
-      question: "Complete the blend: 'त् + व् + अ + म्' =",
-      options: ["त्वम्", "तम्", "वम्", "त्वाम"],
+      question: "वर्ण विच्छेद करें: 'बालः' का सही रूप क्या है?",
+      options: ["ब्+आ+ल्+अः", "ब्+अ+ल्+अः", "बा+लः", "ब्+आ+ल्+अ"],
       answer: 0
     },
     {
-      question: "What is 'पश्येम' in English?",
-      options: ["May we live", "May we see", "May we speak", "May we hear"],
-      answer: 1
+      question: "वर्ण विच्छेद करें: 'अजा' का सही रूप क्या है?",
+      options: ["अ+ज्+आ", "अज्+आ", "अ+जा", "आ+ज्+अ"],
+      answer: 0
     },
     {
-      question: "Which form is 'पत्राणि'?",
-      options: ["Singular Masculine", "Plural Neuter", "Dual Feminine", "Singular Neuter"],
-      answer: 1
+      question: "'पश्येम' शब्द का प्रार्थना में क्या अर्थ है?",
+      options: ["हम देखें", "हम जियें", "हम सुनें", "हम बोलें"],
+      answer: 0
     },
     {
-      question: "Translate this phrase: 'सिंहौ धावतः।'",
-      options: ["One lion runs.", "Two lions run.", "Many lions run.", "Lions are sleeping."],
+      question: "'फले' शब्द किस वचन का रूप है?",
+      options: ["एकवचन", "द्विवचन", "बहुवचन", "संबोधन"],
       answer: 1
     }
   ]
