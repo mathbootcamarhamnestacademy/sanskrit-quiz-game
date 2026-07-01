@@ -1,18 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskrit Quest | Dashboard</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #fdf6e3; }
+        .container { max-width: 400px; margin: 0 auto; text-align: center; }
+        .topic-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        button { padding: 15px; font-size: 16px; border: none; border-radius: 8px; background-color: #e67e22; color: white; cursor: pointer; width: 100%; }
+        .logout-btn { background-color: #c0392b; margin-top: 20px; }
+    </style>
+</head>
 <body>
     <div class="container">
         <h1>Welcome, Student!</h1>
         <p>Choose a chapter to begin your quest:</p>
-        
         <div class="topic-grid">
             <button onclick="window.location.href='quiz.html?topic=1'">Chapter 1: Vandana</button>
-            <button onclick="window.location.href='quiz.html?topic=2'">Chapter 2: Grammar Basics</button>
+            <button onclick="window.location.href='quiz.html?topic=2'">Chapter 2: Grammar</button>
             <button onclick="window.location.href='quiz.html?topic=3'">Chapter 3: Pronouns</button>
             <button onclick="window.location.href='quiz.html?topic=4'">Chapter 4: Verbs</button>
             <button onclick="window.location.href='quiz.html?topic=5'">Chapter 5: Noun Declension</button>
             <button onclick="window.location.href='quiz.html?topic=6'">Chapter 6: Advanced Pronouns</button>
             <button onclick="window.location.href='quiz.html?topic=7'">Chapter 7: Dhatu Roop</button>
         </div>
-        
         <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
-    </body>
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        window.logout = () => { signOut(getAuth()).then(() => window.location.href = "index.html"); };
+    </script>
+</body>
+</html>
