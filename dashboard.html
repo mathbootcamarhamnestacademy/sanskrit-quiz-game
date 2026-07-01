@@ -5,33 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanskrit Quest | Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .topic-grid { display: grid; gap: 10px; margin-top: 20px; }
+        button { width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 5px; cursor: pointer; color: white; background: #f39c12; }
+        .logout-btn { background: #d32f2f; }
+    </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Welcome, Student!</h1>
-        <p>Ready to continue your Sanskrit Quest?</p>
+        <p>Choose a chapter to begin your quest:</p>
         
-        <button onclick="window.location.href='quiz.html'">
-            Start Today's Quiz
-        </button>
+        <div class="topic-grid">
+            <button onclick="window.location.href='quiz.html?topic=1'">Chapter 1: Vandana</button>
+            <button onclick="window.location.href='quiz.html?topic=2'">Chapter 2: Grammar Basics</button>
+            <button onclick="window.location.href='quiz.html?topic=3'">Chapter 3: Pronouns</button>
+            <button onclick="window.location.href='quiz.html?topic=4'">Chapter 4: Verbs</button>
+            <button onclick="window.location.href='quiz.html?topic=5'">Chapter 5: Noun Declension</button>
+            <button onclick="window.location.href='quiz.html?topic=6'">Chapter 6: Advanced Pronouns</button>
+            <button onclick="window.location.href='quiz.html?topic=7'">Chapter 7: Dhatu Roop</button>
+        </div>
         
-        <button onclick="logout()" style="background: #d32f2f;">
-            Logout
-        </button>
+        <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
 
     <script type="module">
         import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-        
-        // Make logout globally available
         window.logout = () => {
             const auth = getAuth();
             signOut(auth).then(() => {
                 window.location.href = "index.html";
-            }).catch((error) => {
-                alert("Error signing out");
-            });
+            }).catch(() => alert("Error signing out"));
         };
     </script>
 </body>
